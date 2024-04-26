@@ -4,7 +4,7 @@ services:
   backend:
     build:
       context: ../backend
-      dockerfile: ./docker/backend/Dockerfile.prod
+      dockerfile: ./docker/Dockerfile
     container_name: medusa-server
     depends_on:
       - postgres
@@ -31,13 +31,3 @@ services:
     container_name: cache
     expose:
       - 6379
-
-  admin:
-    build:
-      context: ../backend
-      dockerfile: ./docker/admin/Dockerfile.prod
-    depends_on:
-      - backend
-    container_name: medusa-admin
-    environment:
-      NODE_OPTIONS: --openssl-legacy-provider
