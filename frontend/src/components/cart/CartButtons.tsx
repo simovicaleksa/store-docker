@@ -10,7 +10,7 @@ export default function CartButtons() {
   const isEmpty = cart?.items.length === 0
 
   return (
-    <SheetFooter className="mt-5 flex flex-col gap-2 bg-background py-5 sm:flex-row">
+    <SheetFooter className="bg-background mt-5 flex flex-col gap-2 py-5 sm:flex-row">
       <SheetClose asChild>
         <Button className="w-full" variant={"secondary"}>
           Continue shopping
