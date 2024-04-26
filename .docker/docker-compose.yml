@@ -41,11 +41,3 @@ services:
     container_name: medusa-admin
     environment:
       NODE_OPTIONS: --openssl-legacy-provider
-
-  storefront:
-    build:
-      context: ./frontend
-      dockerfile: ./docker/Dockerfile
-    container_name: medusa-storefront
-    depends_on:
-      - backend
