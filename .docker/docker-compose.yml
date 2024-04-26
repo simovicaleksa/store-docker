@@ -3,9 +3,8 @@ version: "3.8"
 services:
   backend:
     build:
-      context: ./backend
+      context: ../backend
       dockerfile: ./docker/backend/Dockerfile.prod
-    image: backend:test
     container_name: medusa-server
     depends_on:
       - postgres
@@ -35,8 +34,8 @@ services:
 
   admin:
     build:
-      context: ./admin
-      dockerfile: Dockerfile
+      context: ../backend
+      dockerfile: ./docker/admin/Dockerfile.prod
     depends_on:
       - backend
     container_name: medusa-admin
