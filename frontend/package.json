@@ -10,6 +10,9 @@
     "start": "next start"
   },
   "dependencies": {
+    "@medusajs/medusa": "^1.20.4",
+    "@medusajs/medusa-js": "^6.1.8",
+    "@medusajs/product": "^0.3.11",
     "@t3-oss/env-nextjs": "^0.10.1",
     "next": "^14.2.1",
     "react": "18.2.0",
