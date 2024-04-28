@@ -115,8 +115,8 @@ export async function updateLineItem({
   try {
     await updateItem({ cartId, lineId, quantity })
     revalidateTag("cart")
-  } catch (e: any) {
-    return e.toString()
+  } catch (e) {
+    return String(e)
   }
 }
 

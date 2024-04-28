@@ -10,8 +10,8 @@ import {
   AlertDialogTrigger,
 } from "@/components/shared/ui/alert-dialog"
 import { Button } from "@/components/shared/ui/button"
-import { LineItem } from "@medusajs/medusa"
-import React, { Dispatch, SetStateAction } from "react"
+import { type LineItem } from "@medusajs/medusa"
+import React, { type Dispatch, type SetStateAction } from "react"
 import useAsyncLoader from "@/hooks/shared/useAsyncLoader"
 import LoadingButton from "@/components/shared/ui/loading-button"
 import { updateLineItem } from "@/services/cart/actions"
@@ -48,8 +48,8 @@ export default function ItemRemoveDialog({
         return null
       }
 
-      update()
-    })
+      update().catch((e) => console.log(e))
+    }).catch((e) => console.log(e))
   }
 
   return (
@@ -71,12 +71,12 @@ export default function ItemRemoveDialog({
             src={lineItem.thumbnail}
             width={120}
             height={120}
-            className="rounded-[var(--radius)] border bg-secondary p-2"
+            className="bg-secondary rounded-[var(--radius)] border p-2"
           />
           <div className="">
             <div className="flex w-full flex-col">
               <h2 className="text-lg font-bold">{lineItem.title}</h2>
-              <span className="text-sm text-muted-foreground">
+              <span className="text-muted-foreground text-sm">
                 {lineItem.variant.title}
               </span>
             </div>

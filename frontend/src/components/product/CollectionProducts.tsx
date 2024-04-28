@@ -1,5 +1,5 @@
 import React from "react"
-import { ProductCollection } from "@medusajs/medusa"
+import { type ProductCollection } from "@medusajs/medusa"
 import { getProducts } from "@/services/product"
 import ProductCarousel from "./ProductCarousel"
 import { Button } from "../shared/ui/button"

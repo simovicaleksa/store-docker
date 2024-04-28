@@ -67,7 +67,7 @@ export default function ItemQuantity() {
         >
           -
         </Button>
-        <span className="text-sm text-muted-foreground">
+        <span className="text-muted-foreground text-sm">
           {isLoading ? (
             <Loader className="size-4 animate-spin" />
           ) : (

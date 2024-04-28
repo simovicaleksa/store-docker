@@ -1,6 +1,6 @@
 "use client"
 
-import { LineItem } from "@medusajs/medusa"
+import { type LineItem } from "@medusajs/medusa"
 import React from "react"
 import ProductThumbnail from "../../product/ProductThumbnail"
 import { formatAmount } from "@/utils/prices"
@@ -24,14 +24,14 @@ export default function CartItem({ lineItem }: CartItemProps) {
             src={lineItem.thumbnail}
             width={120}
             height={120}
-            className="h-full w-full rounded-[var(--radius)] border bg-secondary p-2"
+            className="bg-secondary h-full w-full rounded-[var(--radius)] border p-2"
           />
           <ItemQuantity />
         </div>
         <div className="flex w-full flex-col">
           <h2 className="text-lg font-bold">{lineItem.title}</h2>
           <span className="font-semibold">{price}</span>
-          <span className="text-sm text-muted-foreground">
+          <span className="text-muted-foreground text-sm">
             {lineItem.variant.title}
           </span>
         </div>

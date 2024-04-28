@@ -14,12 +14,11 @@ export default function LocalizedClientLink({
   className?: string
   onClick?: () => void
   passHref?: true
-  [x: string]: any
 }) {
   const { countryCode } = useParams()
 
   return (
-    <Link href={`/${countryCode}${href}`} {...props}>
+    <Link href={`/${String(countryCode)}${href}`} {...props}>
       {children}
     </Link>
   )

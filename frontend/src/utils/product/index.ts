@@ -1,9 +1,9 @@
-import { PricedProduct } from "@medusajs/medusa/dist/types/pricing"
+import { type PricedProduct } from "@medusajs/medusa/dist/types/pricing"
 import { formatAmount } from "../prices"
 
 export function getCheapestProductAmount(
   product: PricedProduct,
-  currencyCode: string
+  currencyCode: string,
 ): number | undefined {
   let cheapestPrice: number | undefined
 
@@ -22,7 +22,7 @@ export function getCheapestProductAmount(
 
 export function getCheapestProductPrice(
   product: PricedProduct,
-  currencyCode: string
+  currencyCode: string,
 ) {
   const amount = getCheapestProductAmount(product, currencyCode)
 

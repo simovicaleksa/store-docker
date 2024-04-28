@@ -1,15 +1,13 @@
 "use client"
 
 import { cn } from "@/lib/utils"
-import React, { HTMLAttributes, useEffect, useRef, useState } from "react"
-
-interface ReadMoreProps extends HTMLAttributes<HTMLParagraphElement> {}
+import React, { type HTMLAttributes, useRef, useState } from "react"
 
 export default function ReadMore({
   children,
   className,
   ...rest
-}: ReadMoreProps) {
+}: HTMLAttributes<HTMLParagraphElement>) {
   const [open, setOpen] = useState<boolean>(false)
   const paragraphRef = useRef<HTMLParagraphElement>(null)
 
@@ -25,7 +23,7 @@ export default function ReadMore({
         {children}
       </p>
       <button
-        className="my-0 py-0 font-semibold text-muted-foreground"
+        className="text-muted-foreground my-0 py-0 font-semibold"
         onClick={toggleOpen}
       >
         {open ? "Show less" : "Read more"}

@@ -14,13 +14,13 @@ export default async function CollectionPage({
   searchParams: { page, query, sort },
 }: {
   params: { handle: string }
-  searchParams: { [key: string]: string | string[] | undefined }
+  searchParams: Record<string, string | string[] | undefined>
 }) {
   const perPage = 20
   const offset = (Number(page) || 1) * perPage - perPage
 
-  let collectionId = null
   const response = await getCollections({ limit: 1, handle: [handle] })
+  const collectionId = response?.collections[0]?.id
 
   if (!response) return notFound()
 
@@ -40,7 +40,7 @@ export default async function CollectionPage({
     <main className="mx-auto min-h-screen w-full max-w-7xl p-5">
       <div>
         <h1 className="text-2xl font-bold md:text-3xl">
-          Search {response.collections[0].title.toLowerCase()}
+          Search {response.collections[0]?.title.toLowerCase()}
         </h1>
         <p className="text-muted-foreground">See what products we can offer.</p>
       </div>

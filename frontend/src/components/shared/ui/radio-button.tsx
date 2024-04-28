@@ -1,4 +1,4 @@
-import React, { HTMLAttributes } from "react"
+import React, { type HTMLAttributes } from "react"
 import { FormControl, FormItem, FormLabel } from "./form"
 import { RadioGroupItem } from "./radio-group"
 import { buttonVariants } from "./button"
@@ -36,21 +36,19 @@ export function RadioButton({
   )
 }
 
-interface RadioButtonTitleInfoProps extends HTMLAttributes<HTMLSpanElement> {}
-
 export function RadioButtonTitle({
   className,
   children,
-}: RadioButtonTitleInfoProps) {
+}: HTMLAttributes<HTMLSpanElement>) {
   return <span className={cn("", className)}>{children}</span>
 }
 
 export function RadioButtonInfo({
   className,
   children,
-}: RadioButtonTitleInfoProps) {
+}: HTMLAttributes<HTMLSpanElement>) {
   return (
-    <span className={cn("text-sm text-muted-foreground", className)}>
+    <span className={cn("text-muted-foreground text-sm", className)}>
       {children}
     </span>
   )

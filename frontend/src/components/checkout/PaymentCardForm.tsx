@@ -14,7 +14,7 @@ import {
   useStripe,
 } from "@stripe/react-stripe-js"
 import { Label } from "../shared/ui/label"
-import { CartType } from "@/types/global"
+import { type CartType } from "@/types/cart"
 import PaymentPlaceOrder from "./PaymentPlaceOrder"
 
 type PaymentCardFormProps = {
@@ -34,7 +34,7 @@ export default function PaymentCardForm({
   const toggleChecked = () => setChecked((prev) => !prev)
 
   return (
-    <Card className="mt-1 bg-secondary">
+    <Card className="bg-secondary mt-1">
       <CardHeader>
         <CardTitle>Pay with credit card.</CardTitle>
         <CardDescription>Secure payment with Stripe.</CardDescription>
@@ -44,17 +44,17 @@ export default function PaymentCardForm({
           <div className="col-span-full space-y-2">
             <Label>Card number</Label>
             <CardNumberElement
-              className="rounded-[var(--radius)] border-border bg-background px-5 py-3"
+              className="border-border bg-background rounded-[var(--radius)] px-5 py-3"
               options={{ showIcon: true }}
             />
           </div>
           <div className="space-y-2">
             <Label>Expiry date</Label>
-            <CardExpiryElement className="rounded-[var(--radius)] border-border bg-background px-5 py-3" />
+            <CardExpiryElement className="border-border bg-background rounded-[var(--radius)] px-5 py-3" />
           </div>
           <div className="space-y-2">
             <Label>CVC</Label>
-            <CardCvcElement className="rounded-[var(--radius)] border-border bg-background px-5 py-3" />
+            <CardCvcElement className="border-border bg-background rounded-[var(--radius)] px-5 py-3" />
           </div>
         </div>
       </CardContent>

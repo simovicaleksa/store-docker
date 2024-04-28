@@ -1,16 +1,15 @@
-import { PaymentSession } from "@medusajs/medusa"
-import React, { Dispatch, SetStateAction } from "react"
+import { type PaymentSession } from "@medusajs/medusa"
+import React, { type Dispatch, type SetStateAction } from "react"
 import { Button } from "../shared/ui/button"
 import { paymentInfoMap } from "@/constants/payment"
 import RadioRing from "../shared/ui/radio-ring"
-import { Loader } from "lucide-react"
 import PaymentStripeWrapper from "./PaymentStripeWrapper"
-import { CartType } from "@/types/global"
+import { type CartType } from "@/types/cart"
 
 type PaymentRadioButtonProps = {
   paymentSession: PaymentSession
-  setSelected: Dispatch<SetStateAction<string | null>>
-  selected: string | null
+  setSelected: Dispatch<SetStateAction<string | null | undefined>>
+  selected: string | null | undefined
   cart: CartType
   isLoading: boolean
 }
@@ -42,10 +41,10 @@ export default function PaymentRadioButton({
         <div className="flex h-full w-full flex-row items-center justify-between">
           <div className="flex flex-row items-center space-x-2">
             <RadioRing isSelected={isSelected} />
-            <span>{paymentInfoMap[paymentSession.provider_id].title}</span>
+            <span>{paymentInfoMap[paymentSession.provider_id]?.title}</span>
           </div>
           <span className="text-muted-foreground">
-            {paymentInfoMap[paymentSession.provider_id].icon}
+            {paymentInfoMap[paymentSession.provider_id]?.icon}
           </span>
         </div>
       </Button>

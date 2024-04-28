@@ -1,8 +1,8 @@
 "use client"
 
 import { CheckoutProvider } from "@/context/checkout/CheckoutContext"
-import React, { ReactNode, useState } from "react"
-import { StepType } from "./CheckoutStep"
+import React, { type ReactNode, useState } from "react"
+import { type StepType } from "./CheckoutStep"
 
 export default function CheckoutController({
   children,

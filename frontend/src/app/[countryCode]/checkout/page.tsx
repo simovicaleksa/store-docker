@@ -33,7 +33,7 @@ export default async function CheckoutPage() {
   }
 
   const availableShippingMethods = await listShippingMethods(
-    cart.region_id
+    cart.region_id,
   ).then((methods) => methods?.filter((m) => !m.is_return))
 
   if (!availableShippingMethods) return null
@@ -65,7 +65,7 @@ export default async function CheckoutPage() {
           {cart.payment_session?.provider_id !== "stripe" && (
             <CheckoutStep
               stepName="review"
-              form={<ReviewForm cart={cart} />}
+              form={<ReviewForm />}
               preview={<ReviewPreview />}
             />
           )}

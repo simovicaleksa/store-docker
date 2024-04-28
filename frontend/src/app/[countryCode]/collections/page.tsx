@@ -8,7 +8,7 @@ import React from "react"
 export default async function CollectionsPage({
   searchParams: { page },
 }: {
-  searchParams: { [key: string]: string | string[] | undefined }
+  searchParams: Record<string, string | string[] | undefined>
 }) {
   const perPage = 20
   const offset = (Number(page) || 1) * perPage - perPage

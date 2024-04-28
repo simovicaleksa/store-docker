@@ -1,6 +1,6 @@
 "use client"
 
-import { LineItem } from "@medusajs/medusa"
+import { type LineItem } from "@medusajs/medusa"
 import React from "react"
 import ProductThumbnail from "../product/ProductThumbnail"
 import useCurrencyCode from "@/hooks/countries/useCurrencyCode"
@@ -16,7 +16,7 @@ export default function OrderItems({ items }: { items: LineItem[] }) {
         {items.map((item) => (
           <div className="flex flex-row gap-3" key={item.id}>
             <ProductThumbnail
-              className="size-20 rounded-[var(--radius)] border bg-secondary object-scale-down p-2"
+              className="bg-secondary size-20 rounded-[var(--radius)] border object-scale-down p-2"
               src={item.thumbnail}
               width={300}
               height={300}
@@ -24,12 +24,12 @@ export default function OrderItems({ items }: { items: LineItem[] }) {
             <div className="flex w-full flex-row justify-between space-x-3">
               <div className="flex flex-col">
                 <h3 className="font-medium">{item.title}</h3>
-                <span className="text-sm text-muted-foreground">
+                <span className="text-muted-foreground text-sm">
                   {item.variant.title}
                 </span>
               </div>
               <div className="flex flex-col text-end">
-                <span className="text-sm text-muted-foreground">{`${item.quantity}x ${formatAmount(item.unit_price, currencyCode)}`}</span>
+                <span className="text-muted-foreground text-sm">{`${item.quantity}x ${formatAmount(item.unit_price, currencyCode)}`}</span>
                 <span className="font-medium">
                   {formatAmount(item.total, currencyCode)}
                 </span>

@@ -1,7 +1,7 @@
 import LocalizedClientLink from "@/components/link/LocalizedClientLink"
 import { Button } from "@/components/shared/ui/button"
 import { cn } from "@/lib/utils"
-import React, { ReactNode } from "react"
+import React, { type ReactNode } from "react"
 
 type FooterLinkProps = {
   children?: ReactNode

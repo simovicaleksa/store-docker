@@ -1,7 +1,7 @@
 "use client"
 
 import useCountries from "@/hooks/countries/useCountries"
-import React, { ChangeEvent, FormEvent, use, useState } from "react"
+import React, { type ChangeEvent, type FormEvent, use, useState } from "react"
 import { Input } from "../shared/ui/input"
 import { Label } from "../shared/ui/label"
 import Asterisk from "../shared/ui/asterisk"
@@ -11,7 +11,7 @@ import useAsyncLoader from "@/hooks/shared/useAsyncLoader"
 import LoadingButton from "../shared/ui/loading-button"
 import { setAddress } from "@/services/checkout/actions"
 import { CheckoutContext } from "@/context/checkout/CheckoutContext"
-import { CartType } from "@/types/global"
+import { type CartType } from "@/types/cart"
 import { toast } from "../shared/ui/use-toast"
 
 type ShippingFormData = {
@@ -34,25 +34,25 @@ export default function ShippingForm({ cart }: { cart: CartType | null }) {
   const { countries } = useCountries()
   const { isLoading, asyncLoader } = useAsyncLoader()
   const regionOnlyCountries = countries.filter(
-    (country) => country.region_id === cart?.region_id
+    (country) => country.region_id === cart?.region_id,
   )
 
   const [data, setData] = useState<ShippingFormData>({
-    first_name: cart?.shipping_address?.first_name || "",
-    last_name: cart?.shipping_address?.last_name || "",
-    company: cart?.shipping_address?.company || "",
-    address_1: cart?.shipping_address?.address_1 || "",
-    address_2: cart?.shipping_address?.address_2 || "",
-    city: cart?.shipping_address?.city || "",
-    province: cart?.shipping_address?.province || "",
-    country_code: cart?.shipping_address?.country_code || "",
-    email: cart?.email || "",
-    postal_code: cart?.shipping_address?.postal_code || "",
-    phone: cart?.shipping_address?.phone || "",
+    first_name: cart?.shipping_address?.first_name ?? "",
+    last_name: cart?.shipping_address?.last_name ?? "",
+    company: cart?.shipping_address?.company ?? "",
+    address_1: cart?.shipping_address?.address_1 ?? "",
+    address_2: cart?.shipping_address?.address_2 ?? "",
+    city: cart?.shipping_address?.city ?? "",
+    province: cart?.shipping_address?.province ?? "",
+    country_code: cart?.shipping_address?.country_code ?? "",
+    email: cart?.email ?? "",
+    postal_code: cart?.shipping_address?.postal_code ?? "",
+    phone: cart?.shipping_address?.phone ?? "",
   })
 
   function handleDataChange(
-    e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
+    e: ChangeEvent<HTMLInputElement | HTMLSelectElement>,
   ) {
     const { name, value } = e.currentTarget
 
@@ -70,17 +70,17 @@ export default function ShippingForm({ cart }: { cart: CartType | null }) {
   //   asyncLoader(async () => {
   //     const cart = await retrieveCart()
   //     setData({
-  //       first_name: cart?.shipping_address?.first_name || "",
-  //       last_name: cart?.shipping_address?.last_name || "",
-  //       company: cart?.shipping_address?.company || "",
-  //       address_1: cart?.shipping_address?.address_1 || "",
-  //       address_2: cart?.shipping_address?.address_2 || "",
-  //       city: cart?.shipping_address?.city || "",
-  //       province: cart?.shipping_address?.province || "",
-  //       country_code: cart?.shipping_address?.country_code || "",
-  //       email: cart?.email || "",
-  //       postal_code: cart?.shipping_address?.postal_code || "",
-  //       phone: cart?.shipping_address?.phone || "",
+  //       first_name: cart?.shipping_address?.first_name ?? "",
+  //       last_name: cart?.shipping_address?.last_name ?? "",
+  //       company: cart?.shipping_address?.company ?? "",
+  //       address_1: cart?.shipping_address?.address_1 ?? "",
+  //       address_2: cart?.shipping_address?.address_2 ?? "",
+  //       city: cart?.shipping_address?.city ?? "",
+  //       province: cart?.shipping_address?.province ?? "",
+  //       country_code: cart?.shipping_address?.country_code ?? "",
+  //       email: cart?.email ?? "",
+  //       postal_code: cart?.shipping_address?.postal_code ?? "",
+  //       phone: cart?.shipping_address?.phone ?? "",
   //     })
   //   })
   // }, [asyncLoader])
@@ -93,7 +93,7 @@ export default function ShippingForm({ cart }: { cart: CartType | null }) {
 
       if (error) {
         toast({
-          title: error,
+          title: "Setting address failed.",
           description:
             "Something went wrong. Contact customer support or try again later.",
           variant: "destructive",
@@ -105,7 +105,7 @@ export default function ShippingForm({ cart }: { cart: CartType | null }) {
         setCompletedSteps((prev) => [...prev, "shipping"])
       }
       setCurrentStep("delivery")
-    })
+    }).catch((e) => console.log(e))
   }
 
   return (

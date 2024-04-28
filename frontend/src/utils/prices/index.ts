@@ -5,7 +5,7 @@ const convertToDecimal = (amount: number) => {
 export function formatAmount(
   amount: number | null | undefined,
   currencyCode: string | null | undefined,
-  fallback: string = "Get a quote"
+  fallback = "Get a quote",
 ) {
   if (typeof amount !== "number" || !currencyCode) return fallback
 

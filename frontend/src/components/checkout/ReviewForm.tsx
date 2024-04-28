@@ -1,6 +1,6 @@
 "use client"
 
-import { CartType } from "@/types/global"
+// import { type CartType } from "@/types/cart"
 import React, { useState } from "react"
 import { Checkbox } from "../shared/ui/checkbox"
 import { Label } from "../shared/ui/label"
@@ -9,7 +9,8 @@ import { toast } from "../shared/ui/use-toast"
 import { placeOrder } from "@/services/checkout/actions"
 import LoadingButton from "../shared/ui/loading-button"
 
-export default function ReviewForm({ cart }: { cart: CartType | null }) {
+export default function ReviewForm() {
+  // { cart }: { cart: CartType | null }
   const [checked, setChecked] = useState<boolean>(false)
   const { isLoading, asyncLoader } = useAsyncLoader()
 
@@ -30,19 +31,19 @@ export default function ReviewForm({ cart }: { cart: CartType | null }) {
     asyncLoader(async () => {
       try {
         await placeOrder()
-      } catch (err: any) {
+      } catch (e) {
         toast({
-          title: err?.message || "Something went wrong.",
+          title: "Something went wrong.",
           description: "Contact customer support for more information.",
           variant: "destructive",
         })
       }
-    })
+    }).catch((e) => console.log(e))
   }
 
   return (
     <div className="flex flex-col gap-3">
-      <p className="text-sm text-muted-foreground">
+      <p className="text-muted-foreground text-sm">
         By checking the box below, you confirm that you have read and agreed to
         our Terms of Service.
       </p>

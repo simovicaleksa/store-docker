@@ -1,4 +1,4 @@
-import { Order } from "@medusajs/medusa"
+import { type Order } from "@medusajs/medusa"
 import React from "react"
 
 export default function OrderDelivery({ order }: { order: Order }) {
@@ -8,7 +8,7 @@ export default function OrderDelivery({ order }: { order: Order }) {
       <div className="grid grid-cols-2">
         <div>
           <h3 className="font-medium">Shipping</h3>
-          <ul className="text-sm text-muted-foreground">
+          <ul className="text-muted-foreground text-sm">
             <li className="uppercase">{order.shipping_address.country_code}</li>
             <li>{order.shipping_address.city}</li>
             <li>{order.shipping_address.province}</li>
@@ -18,7 +18,7 @@ export default function OrderDelivery({ order }: { order: Order }) {
         </div>
         <div>
           <h3 className="font-medium">Contact</h3>
-          <ul className="text-sm text-muted-foreground">
+          <ul className="text-muted-foreground text-sm">
             <li>{order.email}</li>
             <li>{order.shipping_address.phone}</li>
           </ul>

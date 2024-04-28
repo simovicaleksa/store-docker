@@ -1,3 +1,7 @@
+import Overlay from "@/components/layout/Overlay"
+import Footer from "@/components/layout/footer/Footer"
+import Header from "@/components/layout/header/Header"
+import JotaiProvider from "@/providers/jotai/JotaiProvider"
 import "@/styles/globals.css"
 
 import { Inter } from "next/font/google"
@@ -20,7 +24,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`font-sans ${inter.variable}`}>{children}</body>
+      <body className={`font-sans ${inter.variable}`}>
+        <JotaiProvider>
+          <Overlay />
+          <Header />
+          {children}
+          <Footer />
+        </JotaiProvider>
+      </body>
     </html>
   )
 }

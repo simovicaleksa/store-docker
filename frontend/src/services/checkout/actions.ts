@@ -3,8 +3,7 @@
 import { revalidateTag } from "next/cache"
 import { cookies } from "next/headers"
 import { updateCart } from "../cart"
-import { StorePostCartsCartReq } from "@medusajs/medusa"
-import { omit } from "lodash"
+import { type StorePostCartsCartReq } from "@medusajs/medusa"
 import { addShippingMethod, completeCart } from "."
 import { redirect } from "next/navigation"
 import medusa from "@/lib/medusa/client"
@@ -31,16 +30,18 @@ export async function setAddress(values: ShippingValues) {
 
   if (!cartId) return { message: "No cartId cookie found" }
 
+  const { email, ...shippingAddress } = values
+
   const data = {
-    shipping_address: omit(values, "email"),
-    email: values.email,
+    shipping_address: shippingAddress,
+    email: email,
   } as StorePostCartsCartReq
 
   try {
     await updateCart(cartId, data)
     revalidateTag("cart")
-  } catch (error: any) {
-    return error.toString()
+  } catch (e) {
+    return String(e)
   }
 }
 
@@ -52,8 +53,8 @@ export async function setShippingMethod(shippingMethodId: string) {
   try {
     await addShippingMethod({ cartId, shippingMethodId })
     revalidateTag("cart")
-  } catch (error: any) {
-    return error.toString()
+  } catch (e: unknown) {
+    return String(e)
   }
 }
 
@@ -67,7 +68,7 @@ export async function placeOrder() {
   try {
     cart = await completeCart(cartId)
     revalidateTag("cart")
-  } catch (error: any) {
+  } catch (error) {
     throw error
   }
 
@@ -87,7 +88,7 @@ export async function createPaymentSessions(cartId: string) {
       revalidateTag("cart")
       return cart
     })
-    .catch((err: any) => {
+    .catch((err) => {
       console.log(err)
       return null
     })

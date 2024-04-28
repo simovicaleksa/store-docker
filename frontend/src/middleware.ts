@@ -1,7 +1,7 @@
 import { DEFAULT_COUNTRY } from "@/constants/countries"
-import { Region } from "@medusajs/medusa"
+import { type Region } from "@medusajs/medusa"
 import { notFound } from "next/navigation"
-import { NextRequest, NextResponse } from "next/server"
+import { type NextRequest, NextResponse } from "next/server"
 
 const regionMapCache = {
   regionMap: new Map<string, Region>(),
@@ -16,12 +16,18 @@ async function getRegionMap() {
     regionMapUpdated < Date.now() - 3600 * 1000
   ) {
     // Fetch regions from Medusa. We can't use the JS client here because middleware is running on Edge and the client needs a Node environment.
-    const { regions } = await fetch(`http://localhost/api/store/regions`, {
+    const res = await fetch(`http://host.docker.internal:9000/store/regions`, {
       next: {
         revalidate: 3600,
         tags: ["regions"],
       },
-    }).then((res) => res.json())
+    })
+
+    if (!res.ok) {
+      notFound()
+    }
+
+    const regions = (await res.json()) as Region[]
 
     if (!regions.length) {
       notFound()
@@ -50,7 +56,7 @@ async function getCountryCode(
   regionMap: Map<string, Region | number>,
 ) {
   try {
-    let countryCode
+    let countryCode: string | undefined
     const countryCodeCookie = request.cookies.get("x-country-code")
 
     const vercelCountryCode = request.headers
@@ -68,7 +74,7 @@ async function getCountryCode(
     } else if (regionMap.has(DEFAULT_COUNTRY)) {
       countryCode = DEFAULT_COUNTRY
     } else if (regionMap.keys().next().value) {
-      countryCode = regionMap.keys().next().value
+      countryCode = String(regionMap.keys().next().value)
     }
 
     return countryCode
@@ -88,9 +94,17 @@ export async function middleware(request: NextRequest) {
 
     const countryCode = regionMap && (await getCountryCode(request, regionMap))
 
-    const urlHasCountryCode =
-      countryCode &&
-      request.nextUrl.pathname.split("/")[1].includes(countryCode)
+    let urlHasCountryCode = true
+
+    if (
+      !request.nextUrl.pathname.split("/")[1]?.includes(String(countryCode))
+    ) {
+      urlHasCountryCode = false
+    }
+
+    if (!countryCode) {
+      urlHasCountryCode = false
+    }
 
     if (urlHasCountryCode) {
       return NextResponse.next()
@@ -109,12 +123,8 @@ export async function middleware(request: NextRequest) {
       redirectUrl = `${request.nextUrl.origin}/${countryCode}${redirectPath}${queryString}`
       response = NextResponse.redirect(`${redirectUrl}`, 307)
     }
-  } catch (err: any) {
-    if (typeof err?.message === "string") {
-      console.log(err.message)
-    } else {
-      console.log("Middleware error.")
-    }
+  } catch (e: unknown) {
+    console.log(e)
   } finally {
     return response
   }

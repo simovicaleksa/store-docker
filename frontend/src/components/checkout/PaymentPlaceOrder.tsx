@@ -1,14 +1,13 @@
-import React, { use } from "react"
+import React from "react"
 import { Checkbox } from "../shared/ui/checkbox"
 import { Label } from "../shared/ui/label"
 import { toast } from "../shared/ui/use-toast"
-import { Stripe, StripeElements } from "@stripe/stripe-js"
+import { type Stripe, type StripeElements } from "@stripe/stripe-js"
 import useAsyncLoader from "@/hooks/shared/useAsyncLoader"
 import { CardFooter } from "../shared/ui/card"
 import LoadingButton from "../shared/ui/loading-button"
 import { CardNumberElement } from "@stripe/react-stripe-js"
-import { CartType } from "@/types/global"
-import { completeCart } from "@/services/checkout"
+import { type CartType } from "@/types/cart"
 import { placeOrder } from "@/services/checkout/actions"
 
 type PaymentPlaceOrderProps = {
@@ -72,30 +71,27 @@ export default function PaymentPlaceOrder({
       }
 
       const billingName = `${cart.shipping_address?.first_name} ${cart.shipping_address?.last_name}`
-      const billingAddress2 = cart?.shipping_address?.address_2
+      const billingAddress2 = String(cart?.shipping_address?.address_2)
 
       try {
-        const { error, paymentIntent } = await stripe.confirmCardPayment(
-          clientSecret,
-          {
-            payment_method: {
-              card: cardElement,
-              billing_details: {
-                name: billingName,
-                address: {
-                  city: cart.shipping_address?.city || undefined,
-                  country: cart.shipping_address?.country_code || undefined,
-                  line1: cart.shipping_address?.address_1 || undefined,
-                  line2: billingAddress2 || undefined,
-                  postal_code: cart.shipping_address?.postal_code || undefined,
-                  state: cart.shipping_address?.province || undefined,
-                },
-                email: cart?.email || undefined,
-                phone: cart.shipping_address?.phone || undefined,
+        const { error } = await stripe.confirmCardPayment(clientSecret, {
+          payment_method: {
+            card: cardElement,
+            billing_details: {
+              name: billingName,
+              address: {
+                city: cart.shipping_address?.city ?? undefined,
+                country: cart.shipping_address?.country_code ?? undefined,
+                line1: cart.shipping_address?.address_1 ?? undefined,
+                line2: billingAddress2 ?? undefined,
+                postal_code: cart.shipping_address?.postal_code ?? undefined,
+                state: cart.shipping_address?.province ?? undefined,
               },
+              email: cart?.email ?? undefined,
+              phone: cart.shipping_address?.phone ?? undefined,
             },
-          }
-        )
+          },
+        })
 
         if (error) {
           toast({
@@ -115,13 +111,13 @@ export default function PaymentPlaceOrder({
           variant: "destructive",
         })
       }
-    })
+    }).catch((e) => console.log(e))
   }
 
   return (
     <CardFooter className="flex flex-col items-start space-y-5 border-t pt-5 text-start">
       <div className="flex flex-col gap-3">
-        <p className="text-sm text-muted-foreground">
+        <p className="text-muted-foreground text-sm">
           By checking the box below, you confirm that you have read and agreed
           to our Terms of Service.
         </p>

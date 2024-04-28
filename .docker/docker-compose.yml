@@ -16,6 +16,8 @@ services:
       JWT_SECRET: some_jwt_secret
       COOKIE_SECRET: some_cookie_secret
       PORT: 9000
+    ports:
+      - 9000:9000
 
   postgres:
     image: postgres:16.2-alpine

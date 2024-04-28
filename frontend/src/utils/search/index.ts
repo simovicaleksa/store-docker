@@ -5,5 +5,5 @@ export function getQuerySearchParam(query: string | string[] | undefined) {
 }
 
 export function getSortOrderParam(sort: string | string[] | undefined) {
-  return typeof sort === "string" ? sortOrderMap[sort] || undefined : undefined
+  return typeof sort === "string" ? sortOrderMap[sort] ?? undefined : undefined
 }

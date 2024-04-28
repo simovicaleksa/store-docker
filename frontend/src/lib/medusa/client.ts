@@ -1,9 +1,8 @@
 import Medusa from "@medusajs/medusa-js"
-import { BACKEND_URL } from "@/constants/shared/index"
 
 const medusa = new Medusa({
-  baseUrl: "http://backend:9000",
-  maxRetries: 3,
+  baseUrl: "http://host.internal.docker:9000",
+  maxRetries: 5,
 })
 
 export default medusa

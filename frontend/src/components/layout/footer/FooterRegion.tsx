@@ -25,7 +25,7 @@ export default function FooterRegion() {
           {`${getCountryName(countryCode)}`}
           <Flag countryCode={countryCode} />
         </Button>
-        <p className="mt-3 text-sm text-muted-foreground">
+        <p className="text-muted-foreground mt-3 text-sm">
           Select your shipping region for more accurate prices.
         </p>
       </div>

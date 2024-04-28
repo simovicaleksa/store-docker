@@ -11,7 +11,7 @@ import React from "react"
 export default async function SearchPage({
   searchParams,
 }: {
-  searchParams: { [key: string]: string | string[] | undefined }
+  searchParams: Record<string, string | string[] | undefined>
 }) {
   const perPage = 20
   const offset = (Number(searchParams.page) || 1) * perPage - perPage

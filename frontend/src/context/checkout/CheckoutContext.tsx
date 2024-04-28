@@ -1,5 +1,6 @@
-import { StepType } from "@/components/checkout/CheckoutStep"
-import { Dispatch, ReactNode, SetStateAction, createContext } from "react"
+import type { StepType } from "@/components/checkout/CheckoutStep"
+import type { Dispatch, ReactNode, SetStateAction } from "react"
+import { createContext } from "react"
 
 type CheckoutContextType = {
   currentStep: StepType
@@ -10,9 +11,13 @@ type CheckoutContextType = {
 
 export const CheckoutContext = createContext<CheckoutContextType>({
   currentStep: "shipping",
-  setCurrentStep: () => {},
   completedSteps: [],
-  setCompletedSteps: () => {},
+  setCompletedSteps: () => {
+    return
+  },
+  setCurrentStep: () => {
+    return
+  },
 })
 
 export function CheckoutProvider({

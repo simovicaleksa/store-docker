@@ -1,13 +1,13 @@
 import {
   Carousel,
-  CarouselApi,
+  type CarouselApi,
   CarouselContent,
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
 } from "@/components/shared/ui/carousel"
-import { Image } from "@medusajs/medusa"
-import React, { Dispatch, SetStateAction } from "react"
+import { type Image } from "@medusajs/medusa"
+import React, { type Dispatch, type SetStateAction } from "react"
 import ProductThumbnail from "../ProductThumbnail"
 import { Button } from "@/components/shared/ui/button"
 import { cn } from "@/lib/utils"

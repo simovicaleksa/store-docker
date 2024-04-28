@@ -1,5 +1,6 @@
-import { ProductOptionValue } from "@medusajs/medusa"
-import { Dispatch, ReactNode, SetStateAction, createContext } from "react"
+import type { ProductOptionValue } from "@medusajs/medusa"
+import type { Dispatch, ReactNode, SetStateAction } from "react"
+import { createContext } from "react"
 
 type ProductOptionsContextType = {
   options: ProductOptionValue[]
@@ -7,7 +8,7 @@ type ProductOptionsContextType = {
 }
 
 export const ProductOptionsContext = createContext<ProductOptionsContextType>(
-  {} as ProductOptionsContextType
+  {} as ProductOptionsContextType,
 )
 
 export function ProductOptionsProvider({

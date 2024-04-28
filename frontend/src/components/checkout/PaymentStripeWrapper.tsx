@@ -1,7 +1,7 @@
 import React from "react"
 import { loadStripe } from "@stripe/stripe-js"
 import { Elements } from "@stripe/react-stripe-js"
-import { CartType } from "@/types/global"
+import { type CartType } from "@/types/cart"
 import { STRIPE_PUBLISH_KEY } from "@/constants/payment"
 import PaymentCardForm from "./PaymentCardForm"
 

@@ -46,7 +46,7 @@ export default function ProductAddToCart({
       }
 
       setOpen(true)
-    })
+    }).catch((e) => console.log(e))
   }
 
   if (!optionsSelected)

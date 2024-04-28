@@ -1,5 +1,6 @@
-import { PricedVariant } from "@medusajs/medusa/dist/types/pricing"
-import { Dispatch, ReactNode, SetStateAction, createContext } from "react"
+import type { PricedVariant } from "@medusajs/medusa/dist/types/pricing"
+import type { Dispatch, ReactNode, SetStateAction } from "react"
+import { createContext } from "react"
 
 type ProductVariantContextType = {
   variant: PricedVariant | null
@@ -7,7 +8,7 @@ type ProductVariantContextType = {
 }
 
 export const ProductVariantContext = createContext<ProductVariantContextType>(
-  {} as ProductVariantContextType
+  {} as ProductVariantContextType,
 )
 
 export function ProductVariantProvider({

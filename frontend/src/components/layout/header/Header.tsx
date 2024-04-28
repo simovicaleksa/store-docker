@@ -7,7 +7,7 @@ import HeaderNavigation from "./HeaderNavigation"
 
 export default function Header() {
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background p-5">
+    <header className="bg-background sticky top-0 z-50 w-full border-b p-5">
       <div className="mx-auto flex w-full max-w-7xl flex-row items-center justify-between">
         <Button variant={"ghost"} asChild>
           <Link href="/">Zen Store</Link>

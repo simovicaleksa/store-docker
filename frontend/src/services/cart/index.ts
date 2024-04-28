@@ -1,6 +1,6 @@
 import medusa from "@/lib/medusa/client"
 import medusaError from "@/utils/medusa"
-import { StorePostCartsCartReq } from "@medusajs/medusa"
+import { type StorePostCartsCartReq } from "@medusajs/medusa"
 import { cache } from "react"
 
 export async function createCart(data = {}) {

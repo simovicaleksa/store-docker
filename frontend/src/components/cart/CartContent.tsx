@@ -1,7 +1,7 @@
 import React from "react"
 import CartItem from "./item/CartItem"
 import { BoxSelect } from "lucide-react"
-import { CartType } from "@/types/global"
+import { type CartType } from "@/types/cart"
 import CartSummary from "./CartSummary"
 
 export default function CartContent({ cart }: { cart: CartType | null }) {

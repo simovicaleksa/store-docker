@@ -1,10 +1,10 @@
 "use client"
 
-import { Image } from "@medusajs/medusa"
+import { type Image } from "@medusajs/medusa"
 import React, { useCallback, useEffect, useState } from "react"
 import GalleryMain from "./GalleryMain"
 import GalleryThumbs from "./GalleryThumbs"
-import { CarouselApi } from "@/components/shared/ui/carousel"
+import { type CarouselApi } from "@/components/shared/ui/carousel"
 
 type ImageGalleryProps = {
   images: Image[] | undefined

@@ -1,5 +1,5 @@
 import { getProducts } from "@/services/product"
-import { ProductCollection } from "@medusajs/medusa"
+import { type ProductCollection } from "@medusajs/medusa"
 import React from "react"
 import {
   Card,
@@ -32,18 +32,18 @@ export default async function CollectionCard({
     >
       <Card className="size-full">
         <CardHeader>
-          <div className="size-full overflow-hidden rounded-[var(--radius)] bg-secondary p-5">
+          <div className="bg-secondary size-full overflow-hidden rounded-[var(--radius)] p-5">
             <ProductThumbnail
               className="aspect-square object-scale-down duration-200 group-hover:scale-105"
               width={400}
               height={400}
-              src={product.thumbnail}
+              src={product?.thumbnail}
             />
           </div>
         </CardHeader>
         <CardContent className="flex w-full flex-row items-center justify-between">
           <CardTitle>{collection.title}</CardTitle>
-          <ArrowRight className="size-6 -rotate-45 text-muted-foreground duration-200 group-hover:rotate-0 group-hover:text-foreground" />
+          <ArrowRight className="text-muted-foreground group-hover:text-foreground size-6 -rotate-45 duration-200 group-hover:rotate-0" />
         </CardContent>
         <CardFooter>
           <CardDescription>View collection</CardDescription>

@@ -26,7 +26,7 @@ export default function PagePagination({ pages }: { pages: number }) {
     return pathname + "?" + createQueryString("page", String(page))
   }
 
-  const page = parseInt(searchParams.get("page") || "0")
+  const page = parseInt(searchParams.get("page") ?? "0")
   const nextPage = getPageUrl(page + 1)
   const prevPage = getPageUrl(page - 1)
 
@@ -68,11 +68,13 @@ export default function PagePagination({ pages }: { pages: number }) {
           </PaginationItem>
         )}
 
-        {!prevPages.includes(2) && prevPages[0] > previewPages && (
-          <PaginationItem>
-            <PaginationEllipsis />
-          </PaginationItem>
-        )}
+        {prevPages.length &&
+          !prevPages.includes(2) &&
+          Number(prevPages.at(0)) > previewPages && (
+            <PaginationItem>
+              <PaginationEllipsis />
+            </PaginationItem>
+          )}
 
         {prevPages.map((pageIdx) => (
           <PaginationItem key={pageIdx}>
@@ -96,11 +98,13 @@ export default function PagePagination({ pages }: { pages: number }) {
           </PaginationItem>
         ))}
 
-        {!nextPages.includes(pages - 1) && nextPages[0] < pages && (
-          <PaginationItem>
-            <PaginationEllipsis />
-          </PaginationItem>
-        )}
+        {nextPages.length &&
+          !nextPages.includes(pages - 1) &&
+          Number(nextPages.at(0)) < pages && (
+            <PaginationItem>
+              <PaginationEllipsis />
+            </PaginationItem>
+          )}
 
         {pages - page > previewPages && (
           <PaginationItem key={pages}>

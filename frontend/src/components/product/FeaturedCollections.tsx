@@ -1,4 +1,4 @@
-import { ProductCollection } from "@medusajs/medusa"
+import { type ProductCollection } from "@medusajs/medusa"
 import React from "react"
 import CollectionProducts from "./CollectionProducts"
 

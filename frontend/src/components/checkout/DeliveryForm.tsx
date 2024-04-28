@@ -1,7 +1,7 @@
 "use client"
 
-import { PricedShippingOption } from "@medusajs/medusa/dist/types/pricing"
-import React, { FormEvent, use, useEffect, useState } from "react"
+import { type PricedShippingOption } from "@medusajs/medusa/dist/types/pricing"
+import React, { type FormEvent, use, useEffect, useState } from "react"
 import { Button } from "../shared/ui/button"
 import { formatAmount } from "@/utils/prices"
 import useCurrencyCode from "@/hooks/countries/useCurrencyCode"
@@ -10,7 +10,7 @@ import LoadingButton from "../shared/ui/loading-button"
 import { setShippingMethod } from "@/services/checkout/actions"
 import { CheckoutContext } from "@/context/checkout/CheckoutContext"
 import { toast } from "../shared/ui/use-toast"
-import { CartType } from "@/types/global"
+import { type CartType } from "@/types/cart"
 
 export default function DeliveryForm({
   availableShippingMethods,
@@ -24,13 +24,13 @@ export default function DeliveryForm({
     use(CheckoutContext)
 
   const [selected, setSelected] = useState<string | null>(
-    cart?.shipping_methods[0]?.id || null
+    cart?.shipping_methods[0]?.id ?? null,
   )
   const [loading, setLoading] = useState<boolean>(false)
 
   useEffect(() => {
     if (!cart?.shipping_methods.length) return
-    setSelected(cart.shipping_methods[0]?.shipping_option_id)
+    setSelected(String(cart.shipping_methods[0]?.shipping_option_id))
   }, [cart?.shipping_methods])
 
   function handleSelectMethod(methodId: string | undefined | null) {
@@ -82,7 +82,7 @@ export default function DeliveryForm({
                 <RadioRing isSelected={method.id === selected} />
                 <span>{method.name}</span>
               </div>
-              <span className="text-sm text-muted-foreground">
+              <span className="text-muted-foreground text-sm">
                 {formatAmount(method.amount, currencyCode, "Free")}
               </span>
             </div>

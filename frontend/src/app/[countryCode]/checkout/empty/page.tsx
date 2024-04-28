@@ -5,14 +5,14 @@ import React from "react"
 
 export default function CheckoutEmptyPage() {
   return (
-    <main className="min-h-screen w-full bg-background">
+    <main className="bg-background min-h-screen w-full">
       <div className="mx-auto max-w-6xl">
         <div className="mx-auto flex flex-col items-center justify-center p-5 pt-20 text-center">
-          <XCircleIcon className="mb-5 size-24 text-destructive" />
+          <XCircleIcon className="text-destructive mb-5 size-24" />
           <h1 className="text-center text-3xl font-semibold lg:text-4xl">
             Checkout failed
           </h1>
-          <p className="mx-auto max-w-lg text-center text-sm text-muted-foreground">
+          <p className="text-muted-foreground mx-auto max-w-lg text-center text-sm">
             You have tried to enter checkout with an empty cart. Please add at
             least one item to your cart before attempting checkout or contact
             customer support if you think this is an error.

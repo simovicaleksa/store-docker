@@ -16,7 +16,7 @@ export default function useCurrencyCode() {
       if (!region?.currency_code.length) return
 
       setCurrencyCode(region.currency_code)
-    })
+    }).catch((e) => console.log(e))
   }, [asyncLoader, countryCode])
 
   return { currencyCode, isLoading }

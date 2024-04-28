@@ -1,5 +1,5 @@
-import { LineItem } from "@medusajs/medusa"
-import { ReactNode, createContext } from "react"
+import { type LineItem } from "@medusajs/medusa"
+import { type ReactNode, createContext } from "react"
 
 export const LineItemContext = createContext<LineItem>({} as LineItem)
 

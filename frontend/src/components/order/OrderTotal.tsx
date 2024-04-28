@@ -2,7 +2,7 @@
 
 import useCurrencyCode from "@/hooks/countries/useCurrencyCode"
 import { formatAmount } from "@/utils/prices"
-import React, { useEffect } from "react"
+import React from "react"
 import {
   Table,
   TableBody,
@@ -10,7 +10,7 @@ import {
   TableCell,
   TableRow,
 } from "../shared/ui/table"
-import { Order } from "@medusajs/medusa"
+import { type Order } from "@medusajs/medusa"
 import { Loader } from "lucide-react"
 
 export default function OrderTotal({

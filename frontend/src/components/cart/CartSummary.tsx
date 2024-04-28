@@ -1,4 +1,4 @@
-import { CartType } from "@/types/global"
+import { type CartType } from "@/types/cart"
 import React from "react"
 import { formatAmount } from "@/utils/prices"
 import useCurrencyCode from "@/hooks/countries/useCurrencyCode"

@@ -25,7 +25,7 @@ import CountrySelect from "./CountrySelect"
 import LoadingButton from "../shared/ui/loading-button"
 import useAsyncLoader from "@/hooks/shared/useAsyncLoader"
 import useCountries from "@/hooks/countries/useCountries"
-import { updateRegion } from "@/app/actions"
+import { updateRegion } from "@/actions/region"
 import { useCurrentPath } from "@/hooks/shared/useCurrentPath"
 import useCountry from "@/hooks/countries/useCountry"
 
@@ -51,7 +51,7 @@ export default function CountriesDialog() {
     asyncLoader(async () => {
       await updateRegion(values.country_code, currentPath)
       setOpen(false)
-    })
+    }).catch((e) => console.log(e))
   }
 
   return (

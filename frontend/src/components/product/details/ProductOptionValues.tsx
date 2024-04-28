@@ -1,4 +1,4 @@
-import { ProductOptionValue } from "@medusajs/medusa"
+import { type ProductOptionValue } from "@medusajs/medusa"
 import React, { use, useMemo } from "react"
 import { Button } from "../../shared/ui/button"
 import { ProductOptionsContext } from "@/context/product/ProductOptionsContext"
@@ -13,7 +13,7 @@ export default function ProductOptionValues({ values }: ProductOptionValues) {
   const addOption = (item: ProductOptionValue) =>
     setOptions((prev) => [
       ...prev.filter(
-        (selectedItem) => selectedItem.option_id !== item.option_id
+        (selectedItem) => selectedItem.option_id !== item.option_id,
       ),
       item,
     ])
@@ -31,9 +31,9 @@ export default function ProductOptionValues({ values }: ProductOptionValues) {
     () =>
       values.filter(
         (item, id, array) =>
-          array.findIndex((val) => val.value === item.value) === id
+          array.findIndex((val) => val.value === item.value) === id,
       ),
-    [values]
+    [values],
   )
 
   return (

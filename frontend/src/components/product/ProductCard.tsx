@@ -1,7 +1,6 @@
 import React from "react"
 import {
   Card,
-  CardContent,
   CardDescription,
   CardFooter,
   CardHeader,
@@ -31,7 +30,7 @@ export default function ProductCard({
   return (
     <LocalizedClientLink href={`/products/${handle}`} className="group">
       <Card className="h-full">
-        <CardHeader className="relative m-5 overflow-hidden rounded-[var(--radius)] border bg-secondary">
+        <CardHeader className="bg-secondary relative m-5 overflow-hidden rounded-[var(--radius)] border">
           <ProductThumbnail
             className="aspect-square object-scale-down p-2 duration-200 group-hover:scale-105"
             src={thumbnail}

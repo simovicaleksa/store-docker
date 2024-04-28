@@ -1,7 +1,7 @@
 import medusa from "@/lib/medusa/client"
 import medusaError from "@/utils/medusa"
-import { StoreGetProductsParams } from "@medusajs/medusa"
-import { PricedProduct } from "@medusajs/medusa/dist/types/pricing"
+import { type StoreGetProductsParams } from "@medusajs/medusa"
+import { type PricedProduct } from "@medusajs/medusa/dist/types/pricing"
 import { cache } from "react"
 
 export const getProducts = cache(
@@ -9,16 +9,12 @@ export const getProducts = cache(
     let response = null
     try {
       response = await medusa.products.list({ limit, ...params })
-    } catch (err: any) {
-      if (typeof err?.message === "string") {
-        console.log(err.message)
-      } else {
-        console.log("Server error.")
-      }
+    } catch (e) {
+      console.log(e)
     } finally {
       return response
     }
-  }
+  },
 )
 
 export const searchProducts = cache(
@@ -26,7 +22,7 @@ export const searchProducts = cache(
     const response = await medusa.products.search({ ...params })
 
     return response
-  }
+  },
 )
 
 export const getProductByHandle = cache(
@@ -41,5 +37,5 @@ export const getProductByHandle = cache(
         return products
       })
       .catch((err) => medusaError(err))
-  }
+  },
 )

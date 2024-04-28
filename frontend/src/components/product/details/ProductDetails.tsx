@@ -9,14 +9,14 @@ import {
   CardHeader,
   CardTitle,
 } from "../../shared/ui/card"
-import {
+import type {
   PricedProduct,
   PricedVariant,
 } from "@medusajs/medusa/dist/types/pricing"
 import ProductThumbnail from "../ProductThumbnail"
 import { getCheapestProductPrice } from "@/utils/product"
 import useCurrencyCode from "@/hooks/countries/useCurrencyCode"
-import { ProductOptionValue } from "@medusajs/medusa"
+import type { ProductOptionValue } from "@medusajs/medusa"
 import { ProductOptionsProvider } from "@/context/product/ProductOptionsContext"
 import { ProductVariantProvider } from "@/context/product/ProductVariantContext"
 import { getProductVariantByOptions, getVariantPrice } from "@/utils/variant"
@@ -56,7 +56,7 @@ export default function ProductDetails({
           <CardHeader>
             <div className="flex flex-row gap-5">
               <ProductThumbnail
-                className="hidden aspect-square rounded-[var(--radius)] bg-secondary object-scale-down p-3 md:flex"
+                className="bg-secondary hidden aspect-square rounded-[var(--radius)] object-scale-down p-3 md:flex"
                 src={product.thumbnail}
                 width={120}
                 height={120}
@@ -80,7 +80,7 @@ export default function ProductDetails({
             <SelectOptions options={product.options} />
           </CardContent>
           <CardFooter>
-            <ProductAddToCart optionsCount={product.options?.length || 0} />
+            <ProductAddToCart optionsCount={product.options?.length ?? 0} />
           </CardFooter>
         </Card>
       </ProductVariantProvider>

@@ -1,4 +1,4 @@
-import { ProductOption } from "@medusajs/medusa"
+import { type ProductOption } from "@medusajs/medusa"
 import React from "react"
 import ProductOptionValues from "./ProductOptionValues"
 

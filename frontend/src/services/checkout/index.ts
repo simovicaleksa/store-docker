@@ -1,6 +1,5 @@
 import medusa from "@/lib/medusa/client"
 import medusaError from "@/utils/medusa"
-import { revalidateTag } from "next/cache"
 import { cache } from "react"
 
 export async function addShippingMethod({
@@ -18,7 +17,7 @@ export async function addShippingMethod({
 
 export const listShippingMethods = cache(async function listShippingMethods(
   regionId: string,
-  productIds?: string[]
+  productIds?: string[],
 ) {
   const product_ids = productIds?.join(",")
 

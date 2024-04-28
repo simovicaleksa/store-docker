@@ -2,7 +2,7 @@
 
 import { useCallback, useState } from "react"
 
-type AsyncFunctionType<T> = (...args: any[]) => Promise<T>
+type AsyncFunctionType<T> = (...args: unknown[]) => Promise<T>
 
 export default function useAsyncLoader<T>() {
   const [isLoading, setIsLoading] = useState<boolean>(false)

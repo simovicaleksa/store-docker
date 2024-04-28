@@ -1,7 +1,7 @@
 "use client"
 
 import useCurrencyCode from "@/hooks/countries/useCurrencyCode"
-import { CartType } from "@/types/global"
+import { type CartType } from "@/types/cart"
 import { formatAmount } from "@/utils/prices"
 import React from "react"
 
@@ -13,7 +13,7 @@ export default function DeliveryPreview({ cart }: { cart: CartType | null }) {
       <div className="grid grid-cols-2">
         <div>
           <h1 className="font-medium">Method</h1>
-          <ul className="text-sm text-muted-foreground">
+          <ul className="text-muted-foreground text-sm">
             <li>No information provider.</li>
           </ul>
         </div>
@@ -25,18 +25,18 @@ export default function DeliveryPreview({ cart }: { cart: CartType | null }) {
     <div className="grid grid-cols-2">
       <div>
         <h1 className="font-medium">Method</h1>
-        <ul className="text-sm text-muted-foreground">
-          <li>{cart?.shipping_methods[0].shipping_option.name}</li>
+        <ul className="text-muted-foreground text-sm">
+          <li>{cart?.shipping_methods[0]?.shipping_option.name}</li>
         </ul>
       </div>
       <div>
         <h1 className="font-medium">Cost</h1>
-        <ul className="text-sm text-muted-foreground">
+        <ul className="text-muted-foreground text-sm">
           <li>
             {formatAmount(
-              cart?.shipping_methods[0].price,
+              cart?.shipping_methods[0]?.price,
               currencyCode,
-              "Free"
+              "Free",
             )}
           </li>
         </ul>

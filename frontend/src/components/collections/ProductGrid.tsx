@@ -1,6 +1,6 @@
 "use client"
 
-import { PricedProduct } from "@medusajs/medusa/dist/types/pricing"
+import { type PricedProduct } from "@medusajs/medusa/dist/types/pricing"
 import React from "react"
 import ProductCard from "../product/ProductCard"
 import { getCheapestProductPrice } from "@/utils/product"

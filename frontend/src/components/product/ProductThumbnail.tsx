@@ -1,4 +1,4 @@
-import Image, { ImageProps } from "next/image"
+import Image, { type ImageProps } from "next/image"
 import React from "react"
 
 interface ProductThumbnailProps extends Omit<ImageProps, "alt" | "src"> {

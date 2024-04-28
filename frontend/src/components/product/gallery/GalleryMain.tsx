@@ -1,11 +1,11 @@
 import {
   Carousel,
-  CarouselApi,
+  type CarouselApi,
   CarouselContent,
   CarouselItem,
 } from "@/components/shared/ui/carousel"
-import { Image } from "@medusajs/medusa"
-import React, { Dispatch, SetStateAction } from "react"
+import { type Image } from "@medusajs/medusa"
+import React, { type Dispatch, type SetStateAction } from "react"
 import ProductThumbnail from "../ProductThumbnail"
 
 type ImageGalleryProps = {
@@ -20,7 +20,7 @@ export default function GalleryMain({ images, setMainApi }: ImageGalleryProps) {
         {images.map((image, idx) => (
           <CarouselItem key={idx}>
             <ProductThumbnail
-              className="h-full w-full rounded-[var(--radius)] bg-secondary object-scale-down"
+              className="bg-secondary h-full w-full rounded-[var(--radius)] object-scale-down"
               src={image.url}
               width={700}
               height={700}

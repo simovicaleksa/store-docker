@@ -1,9 +1,10 @@
 import { cn } from "@/lib/utils"
-import React, { HTMLAttributes } from "react"
+import React, { type HTMLAttributes } from "react"
 
-interface AsteriskProps extends HTMLAttributes<HTMLSpanElement> {}
-
-export default function Asterisk({ className, ...rest }: AsteriskProps) {
+export default function Asterisk({
+  className,
+  ...rest
+}: HTMLAttributes<HTMLSpanElement>) {
   return (
     <span
       className={cn("text-red-600", className)}

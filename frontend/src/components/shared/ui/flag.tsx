@@ -1,6 +1,8 @@
 import { cn } from "@/lib/utils"
 import React from "react"
-import ReactCountryFlag, { ReactCountryFlagProps } from "react-country-flag"
+import ReactCountryFlag, {
+  type ReactCountryFlagProps,
+} from "react-country-flag"
 
 export default function Flag({
   countryCode,

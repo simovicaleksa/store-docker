@@ -1,7 +1,7 @@
 "use client"
 
 import { usePathname, useRouter, useSearchParams } from "next/navigation"
-import React, { ChangeEvent, useEffect, useState } from "react"
+import React, { type ChangeEvent, useEffect, useState } from "react"
 import { Input } from "../shared/ui/input"
 import { SearchIcon } from "lucide-react"
 import useCreateQueryString from "@/hooks/shared/useCreateQueryString"
@@ -34,10 +34,10 @@ export default function SearchInput(props: { className?: string }) {
     <div
       className={cn(
         "relative flex h-fit flex-row items-center",
-        props.className
+        props.className,
       )}
     >
-      <SearchIcon className="pointer-events-none absolute size-5 translate-x-3 text-muted-foreground" />
+      <SearchIcon className="text-muted-foreground pointer-events-none absolute size-5 translate-x-3" />
       <Input
         value={searchQuery}
         onChange={(e) => onSearchChange(e)}

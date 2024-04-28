@@ -1,6 +1,6 @@
 "use client"
 
-import { CartType } from "@/types/global"
+import { type CartType } from "@/types/cart"
 import React, { use, useEffect, useState } from "react"
 import useAsyncLoader from "@/hooks/shared/useAsyncLoader"
 import LoadingButton from "../shared/ui/loading-button"
@@ -10,7 +10,7 @@ import { setPaymentSession } from "@/services/checkout/actions"
 import { toast } from "../shared/ui/use-toast"
 
 export default function PaymentForm({ cart }: { cart: CartType }) {
-  const [selected, setSelected] = useState<string | null>(null)
+  const [selected, setSelected] = useState<string | null | undefined>(null)
   const { isLoading, asyncLoader } = useAsyncLoader()
   const { setCompletedSteps, setCurrentStep, completedSteps } =
     use(CheckoutContext)
@@ -19,7 +19,7 @@ export default function PaymentForm({ cart }: { cart: CartType }) {
     if (typeof cart?.payment_session?.provider_id === "string") {
       setSelected(cart.payment_session.provider_id)
     } else {
-      setSelected(cart.payment_sessions[0].provider_id)
+      setSelected(cart.payment_sessions[0]?.provider_id)
     }
   }, [cart])
 
@@ -41,7 +41,7 @@ export default function PaymentForm({ cart }: { cart: CartType }) {
         })
         return null
       }
-    })
+    }).catch((e) => console.log(e))
   }, [asyncLoader, selected, cart.id])
 
   function onSubmit() {
@@ -50,7 +50,7 @@ export default function PaymentForm({ cart }: { cart: CartType }) {
         setCompletedSteps((prev) => [...prev, "payment"])
       }
       setCurrentStep("review")
-    })
+    }).catch((e) => console.log(e))
   }
 
   return (

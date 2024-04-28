@@ -1,7 +1,7 @@
 "use client"
 
 import { getCountries } from "@/services/countries"
-import { Country } from "@medusajs/medusa"
+import { type Country } from "@medusajs/medusa"
 import { useEffect, useState } from "react"
 import useAsyncLoader from "../shared/useAsyncLoader"
 
@@ -13,7 +13,7 @@ export default function useCountries() {
     asyncLoader(async () => {
       const countries = await getCountries()
       setCountries(countries)
-    })
+    }).catch((e) => console.log(e))
   }, [asyncLoader])
 
   return { isLoading, countries }

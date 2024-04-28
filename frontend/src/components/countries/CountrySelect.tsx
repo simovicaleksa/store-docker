@@ -6,8 +6,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "../shared/ui/select"
-import { SelectProps } from "@radix-ui/react-select"
-import { Country } from "@medusajs/medusa"
+import { type SelectProps } from "@radix-ui/react-select"
+import { type Country } from "@medusajs/medusa"
 import Flag from "../shared/ui/flag"
 
 interface CountrySelectProps extends SelectProps {
