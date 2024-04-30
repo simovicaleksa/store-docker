@@ -71,12 +71,12 @@ export default function ItemRemoveDialog({
             src={lineItem.thumbnail}
             width={120}
             height={120}
-            className="bg-secondary rounded-[var(--radius)] border p-2"
+            className="rounded-[var(--radius)] border bg-secondary p-2"
           />
           <div className="">
             <div className="flex w-full flex-col">
               <h2 className="text-lg font-bold">{lineItem.title}</h2>
-              <span className="text-muted-foreground text-sm">
+              <span className="text-sm text-muted-foreground">
                 {lineItem.variant.title}
               </span>
             </div>

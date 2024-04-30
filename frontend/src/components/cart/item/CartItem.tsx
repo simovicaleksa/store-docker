@@ -24,14 +24,14 @@ export default function CartItem({ lineItem }: CartItemProps) {
             src={lineItem.thumbnail}
             width={120}
             height={120}
-            className="bg-secondary h-full w-full rounded-[var(--radius)] border p-2"
+            className="h-full w-full rounded-[var(--radius)] border bg-secondary p-2"
           />
           <ItemQuantity />
         </div>
         <div className="flex w-full flex-col">
           <h2 className="text-lg font-bold">{lineItem.title}</h2>
           <span className="font-semibold">{price}</span>
-          <span className="text-muted-foreground text-sm">
+          <span className="text-sm text-muted-foreground">
             {lineItem.variant.title}
           </span>
         </div>

@@ -16,7 +16,12 @@ export async function updateRegion(countryCode: string, currentPath: string) {
   const cartId = cookies().get("_medusa_cart_id")?.value
   const region = await getRegion(countryCode)
 
-  cookies().set("x-country-code", countryCode)
+  cookies().set("x-country-code", countryCode, {
+    maxAge: 60 * 60 * 24 * 7, // 7 days
+    httpOnly: true,
+    sameSite: "strict",
+    secure: process.env.NODE_ENV === "production",
+  })
 
   if (!region) {
     return null
