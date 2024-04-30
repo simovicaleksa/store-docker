@@ -21,6 +21,9 @@ try {
   dotenv.config({ path: process.cwd() + "/" + ENV_FILE_NAME });
 } catch (e) {}
 
+// Url used for local file storage pointing location
+const BACKEND_URL = process.env.BACKEND_URL || "http://localhost:9000";
+
 // CORS when consuming Medusa from admin
 const ADMIN_CORS =
   process.env.ADMIN_CORS || "http://localhost:7000,http://localhost:7001";
@@ -40,6 +43,7 @@ const plugins = [
     resolve: `@medusajs/file-local`,
     options: {
       upload_dir: "uploads",
+      backend_url: BACKEND_URL,
     },
   },
   {

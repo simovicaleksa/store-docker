@@ -21,7 +21,7 @@ const loaders = require("@medusajs/medusa/dist/loaders/index").default;
           if (err) {
             return;
           }
-          console.log(`Server is ready on port: ${port}`);
+          console.log(`Server is ready on portx: ${port}`);
         })
       );
 
