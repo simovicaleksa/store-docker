@@ -1,4 +1,6 @@
-{ debug }
+{ 
+  debug
+}
 
 srv520376.hstgr.cloud:443 {
   tls asesa.simic@gmail.com
