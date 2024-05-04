@@ -15,13 +15,9 @@ srv520376.hstgr.cloud:9000 {
 }
 
 127.0.1.1:9000 {
-  tls asesa.simic@gmail.com
-
   reverse_proxy http://backend:9000
 }
 
 host.docker.internal:9000 {
-  tls asesa.simic@gmail.com
-
   reverse_proxy http://backend:9000
 }
