@@ -1,0 +1,12 @@
+host.docker.internal:443 {
+  tls internal
+
+  reverse_proxy http://frontend:8000
+
+}
+
+host.docker.internal:9000 {
+  tls internal
+
+  reverse_proxy http://backend:9000 
+}
