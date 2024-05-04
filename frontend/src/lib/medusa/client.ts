@@ -1,7 +1,7 @@
 import Medusa from "@medusajs/medusa-js"
 
 const medusa = new Medusa({
-  baseUrl: "http://host.docker.internal/api",
+  baseUrl: "https://codexn.net:9000",
   maxRetries: 5,
 })
 

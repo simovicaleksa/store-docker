@@ -16,7 +16,7 @@ async function getRegionMap() {
     regionMapUpdated < Date.now() - 3600 * 1000
   ) {
     // Fetch regions from Medusa. We can't use the JS client here because middleware is running on Edge and the client needs a Node environment.
-    const res = await fetch(`http://host.docker.internal/api/store/regions`, {
+    const res = await fetch(`https://codexn.net/store/regions`, {
       next: {
         revalidate: 3600,
         tags: ["regions"],
