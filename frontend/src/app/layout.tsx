@@ -26,10 +26,10 @@ export default function RootLayout({
     <html lang="en">
       <body className={`font-sans ${inter.variable}`}>
         <JotaiProvider>
-          {/* <Overlay /> */}
-          {/* <Header /> */}
+          <Overlay />
+          <Header />
           {children}
-          {/* <Footer /> */}
+          <Footer />
         </JotaiProvider>
       </body>
     </html>
