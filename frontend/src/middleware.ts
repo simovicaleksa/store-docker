@@ -24,15 +24,18 @@ async function getRegionMap() {
     })
 
     if (!res.ok) {
+      console.log("getRegionMap | fetch regions response: not okay!")
       notFound()
     }
 
     const regions = (await res.json()) as Region[]
 
     if (!regions.length) {
+      console.log("getRegionMap | regions is an empty array")
       notFound()
     }
 
+    console.log(regions)
     // Create a map of country codes to regions.
     regions.forEach((region: Region) => {
       region.countries.forEach((c) => {
@@ -64,6 +67,7 @@ async function getCountryCode(
       ?.toLowerCase()
 
     const urlCountryCode = request.nextUrl.pathname.split("/")[1]?.toLowerCase()
+    console.log(`getCountryCode | urlCountryCode: ${urlCountryCode}`)
 
     if (urlCountryCode && regionMap.has(urlCountryCode)) {
       countryCode = urlCountryCode
@@ -91,6 +95,7 @@ export async function middleware(request: NextRequest) {
   let response = NextResponse.next()
   try {
     const regionMap = await getRegionMap()
+    console.log(regionMap)
 
     const countryCode = regionMap && (await getCountryCode(request, regionMap))
 
@@ -113,6 +118,8 @@ export async function middleware(request: NextRequest) {
     const redirectPath =
       request.nextUrl.pathname === "/" ? "" : request.nextUrl.pathname
 
+    console.log(`middleware | redirectPath: ${redirectPath}`)
+
     const queryString = request.nextUrl.search ? request.nextUrl.search : ""
 
     let redirectUrl = request.nextUrl.href
@@ -121,6 +128,8 @@ export async function middleware(request: NextRequest) {
 
     if (!urlHasCountryCode && countryCode) {
       redirectUrl = `${request.nextUrl.origin}/${countryCode}${redirectPath}${queryString}`
+      console.log(`middleware | redirectUrl: ${redirectUrl}`)
+
       response = NextResponse.redirect(`${redirectUrl}`, 307)
     }
   } catch (e: unknown) {
