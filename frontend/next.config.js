@@ -7,17 +7,8 @@ await import("./src/env.js")
 /** @type {import("next").NextConfig} */
 const config = {
   output: "standalone",
-  async rewrites() {
-    return [
-      {
-        source: "/products",
-        destination: "/search",
-      },
-      {
-        source: "/home",
-        destination: "/",
-      },
-    ]
+  compiler: {
+    removeConsole: false,
   },
   images: {
     remotePatterns: [
