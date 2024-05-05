@@ -1,6 +1,5 @@
 import { DEFAULT_COUNTRY } from "@/constants/countries"
 import { type Region } from "@medusajs/medusa"
-import { notFound } from "next/navigation"
 import { type NextRequest, NextResponse } from "next/server"
 
 const regionMapCache = {
@@ -22,11 +21,6 @@ async function getRegionMap() {
         tags: ["regions"],
       },
     })
-
-    if (!res.ok) {
-      console.log("getRegionMap | fetch regions response: not okay!")
-      notFound()
-    }
 
     const regions = (await res.json()) as Region[]
     console.log(res)
