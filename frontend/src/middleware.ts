@@ -34,11 +34,6 @@ async function getRegionMap() {
     const regions = (await res.json()) as Region[]
     console.log(res)
 
-    if (!regions.length) {
-      console.log("getRegionMap | regions is an empty array")
-      notFound()
-    }
-
     console.log(regions)
     // Create a map of country codes to regions.
     regions.forEach((region: Region) => {
