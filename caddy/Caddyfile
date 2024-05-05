@@ -13,3 +13,27 @@ srv520376.hstgr.cloud:9000 {
 
   reverse_proxy http://backend:9000
 }
+
+www.codexn.net {
+  tls asesa.simic@gmail.com
+
+  redir https://codexn.net
+}
+
+codexn.net {
+  tls asesa.simic@gmail.com
+
+  reverse_proxy http://frontend:8000
+}
+
+www.codexn.net:9000 {
+  tls asesa.simic@gmail.com
+
+  redir https://codexn.net:9000
+}
+
+codexn.net:9000 {
+  tls asesa.simic@gmail.com
+
+  reverse_proxy http://backend:9000
+}
