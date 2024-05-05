@@ -1,7 +1,7 @@
 import Medusa from "@medusajs/medusa-js"
 
 const medusa = new Medusa({
-  baseUrl: "http://backend:9000",
+  baseUrl: "https://www.codexn.net:9000",
   maxRetries: 3,
 })
 
