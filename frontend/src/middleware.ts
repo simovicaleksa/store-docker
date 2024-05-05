@@ -23,7 +23,7 @@ async function getRegionMap() {
     })
 
     const regions = (await res.json()) as Region[]
-    console.log(res)
+    console.log(res.json())
 
     console.log(regions)
     // Create a map of country codes to regions.
