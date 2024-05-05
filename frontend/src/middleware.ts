@@ -22,7 +22,7 @@ async function getRegionMap() {
       },
     })
 
-    const regions = (await res.json()) as Region[]
+    const { regions } = (await res.json()) as { regions: Region[] }
     console.log(res.json())
 
     console.log(regions)
