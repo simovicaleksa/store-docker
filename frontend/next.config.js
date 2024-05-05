@@ -7,9 +7,11 @@ await import("./src/env.js")
 /** @type {import("next").NextConfig} */
 const config = {
   output: "standalone",
-  compiler: {
-    removeConsole: false,
-  },
+  // uncomment for logging in production
+  /*
+   compiler: {
+     removeConsole: false,
+   }, */
   images: {
     remotePatterns: [
       {
