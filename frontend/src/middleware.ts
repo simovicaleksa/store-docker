@@ -1,6 +1,7 @@
 import { DEFAULT_COUNTRY } from "@/constants/countries"
 import { type Region } from "@medusajs/medusa"
 import { type NextRequest, NextResponse } from "next/server"
+import { BACKEND_URL } from "./constants/shared"
 
 const regionMapCache = {
   regionMap: new Map<string, Region>(),
@@ -15,7 +16,7 @@ async function getRegionMap() {
     regionMapUpdated < Date.now() - 3600 * 1000
   ) {
     // Fetch regions from Medusa. We can't use the JS client here because middleware is running on Edge and the client needs a Node environment.
-    const res = await fetch(`https://codexn.net:9000/store/regions`, {
+    const res = await fetch(`${BACKEND_URL}/store/regions`, {
       next: {
         revalidate: 3600,
         tags: ["regions"],

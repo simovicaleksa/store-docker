@@ -1,7 +1,8 @@
+import { BACKEND_URL } from "@/constants/shared"
 import Medusa from "@medusajs/medusa-js"
 
 const medusa = new Medusa({
-  baseUrl: "https://codexn.net:9000",
+  baseUrl: BACKEND_URL,
   maxRetries: 3,
 })
 
