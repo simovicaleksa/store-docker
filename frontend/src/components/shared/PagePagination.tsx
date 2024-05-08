@@ -69,12 +69,12 @@ export default function PagePagination({ pages }: { pages: number }) {
         )}
 
         {prevPages.length &&
-          !prevPages.includes(2) &&
-          Number(prevPages.at(0)) > previewPages && (
-            <PaginationItem>
-              <PaginationEllipsis />
-            </PaginationItem>
-          )}
+        !prevPages.includes(2) &&
+        Number(prevPages.at(0)) > previewPages ? (
+          <PaginationItem>
+            <PaginationEllipsis />
+          </PaginationItem>
+        ) : null}
 
         {prevPages.map((pageIdx) => (
           <PaginationItem key={pageIdx}>
@@ -99,12 +99,12 @@ export default function PagePagination({ pages }: { pages: number }) {
         ))}
 
         {nextPages.length &&
-          !nextPages.includes(pages - 1) &&
-          Number(nextPages.at(0)) < pages && (
-            <PaginationItem>
-              <PaginationEllipsis />
-            </PaginationItem>
-          )}
+        !nextPages.includes(pages - 1) &&
+        Number(nextPages.at(0)) < pages ? (
+          <PaginationItem>
+            <PaginationEllipsis />
+          </PaginationItem>
+        ) : null}
 
         {pages - page > previewPages && (
           <PaginationItem key={pages}>

@@ -1,7 +1,7 @@
 import { DEFAULT_COUNTRY } from "@/constants/countries"
 import { type Region } from "@medusajs/medusa"
-import { notFound } from "next/navigation"
 import { type NextRequest, NextResponse } from "next/server"
+import { BACKEND_URL } from "./constants/shared"
 
 const regionMapCache = {
   regionMap: new Map<string, Region>(),
@@ -16,22 +16,14 @@ async function getRegionMap() {
     regionMapUpdated < Date.now() - 3600 * 1000
   ) {
     // Fetch regions from Medusa. We can't use the JS client here because middleware is running on Edge and the client needs a Node environment.
-    const res = await fetch(`https://codexn.net/store/regions`, {
+    const res = await fetch(`${BACKEND_URL}/store/regions`, {
       next: {
         revalidate: 3600,
         tags: ["regions"],
       },
     })
 
-    if (!res.ok) {
-      notFound()
-    }
-
-    const regions = (await res.json()) as Region[]
-
-    if (!regions.length) {
-      notFound()
-    }
+    const { regions } = (await res.json()) as { regions: Region[] }
 
     // Create a map of country codes to regions.
     regions.forEach((region: Region) => {
@@ -121,6 +113,7 @@ export async function middleware(request: NextRequest) {
 
     if (!urlHasCountryCode && countryCode) {
       redirectUrl = `${request.nextUrl.origin}/${countryCode}${redirectPath}${queryString}`
+
       response = NextResponse.redirect(`${redirectUrl}`, 307)
     }
   } catch (e: unknown) {
