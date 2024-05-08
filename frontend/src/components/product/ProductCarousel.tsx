@@ -23,7 +23,7 @@ export default function ProductCarousel({ products }: ProductCarouselProps) {
   if (isLoading) return null
 
   return (
-    <Carousel opts={{ dragFree: true }}>
+    <Carousel opts={{ dragFree: true, align: "start" }}>
       <CarouselContent>
         {products.map((product, idx) => (
           <CarouselItem
