@@ -9,6 +9,7 @@ import {
 import ProductThumbnail from "./ProductThumbnail"
 import LocalizedClientLink from "../link/LocalizedClientLink"
 import { Badge } from "../shared/ui/badge"
+import { cn } from "@/lib/utils"
 
 type ProductCardProps = {
   title: string | null | undefined
@@ -16,6 +17,8 @@ type ProductCardProps = {
   thumbnail: string | null | undefined
   handle: string | null | undefined
   price: string | null | undefined
+  noEvents?: boolean
+  className?: string
 }
 
 export default function ProductCard({
@@ -24,12 +27,18 @@ export default function ProductCard({
   collection,
   handle,
   price,
+  noEvents,
+  className,
 }: ProductCardProps) {
   if (!handle?.length || !thumbnail?.length) return null
 
   return (
-    <LocalizedClientLink href={`/products/${handle}`} className="group">
-      <Card className="h-full">
+    <LocalizedClientLink
+      href={`/products/${handle}`}
+      noEvents={noEvents}
+      className="group"
+    >
+      <Card className={cn("h-full", className)}>
         <CardHeader className="relative m-5 overflow-hidden rounded-[var(--radius)] border bg-secondary">
           <ProductThumbnail
             className="aspect-square self-center object-scale-down p-2 duration-200 group-hover:scale-105"

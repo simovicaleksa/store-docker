@@ -11,8 +11,6 @@ export default function HomeProductGrid({
 }) {
   if (!products?.length) return null
 
-  const splicedProducts = products.splice(1)
-
   return (
     <div className="mx-auto max-w-7xl p-5">
       <div className="my-5 flex flex-row justify-between">
@@ -21,7 +19,7 @@ export default function HomeProductGrid({
           <LocalizedClientLink href="/search">View all</LocalizedClientLink>
         </Button>
       </div>
-      <ProductGrid products={splicedProducts} />
+      <ProductGrid products={products} />
     </div>
   )
 }

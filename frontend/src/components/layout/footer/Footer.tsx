@@ -29,7 +29,7 @@ export default async function Footer() {
   const response = await getCollections({ limit: 5 })
 
   return (
-    <footer className="relative mt-20 w-full border-t bg-gradient-to-b from-primary/90 to-primary/95 pb-32 pt-10 text-primary-foreground">
+    <footer className="relative w-full border-t bg-gradient-to-b from-primary/90 to-primary/95 pb-32 pt-10 text-primary-foreground">
       <FooterCopyright />
 
       <div className="mx-auto grid w-full max-w-7xl grid-cols-1 gap-16 p-5 sm:grid-cols-2 xl:grid-cols-4">

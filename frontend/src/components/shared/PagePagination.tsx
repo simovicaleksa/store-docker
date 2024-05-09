@@ -50,7 +50,7 @@ export default function PagePagination({ pages }: { pages: number }) {
   if (pages === 0) return null
 
   return (
-    <Pagination className="my-10">
+    <Pagination className="my-10 w-fit">
       <PaginationContent>
         <Button
           disabled={page === 1}

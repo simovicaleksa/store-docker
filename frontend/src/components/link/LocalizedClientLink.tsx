@@ -7,6 +7,7 @@ import React from "react"
 export default function LocalizedClientLink({
   children,
   href,
+  noEvents,
   ...props
 }: {
   children?: React.ReactNode
@@ -14,11 +15,16 @@ export default function LocalizedClientLink({
   className?: string
   onClick?: () => void
   passHref?: true
+  noEvents?: boolean
 }) {
   const { countryCode } = useParams()
 
   return (
-    <Link href={`/${String(countryCode)}${href}`} {...props}>
+    <Link
+      href={`/${String(countryCode)}${href}`}
+      style={{ pointerEvents: noEvents ? "none" : "all" }}
+      {...props}
+    >
       {children}
     </Link>
   )
