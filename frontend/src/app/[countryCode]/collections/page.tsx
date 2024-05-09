@@ -4,6 +4,12 @@ import { getCollections } from "@/services/collection"
 import { getPagesCount } from "@/utils/pages"
 import { notFound } from "next/navigation"
 import React from "react"
+import { type Metadata } from "next"
+
+export const metadata = {
+  title: "Collections",
+  description: "Browse available collections of products.",
+} as Metadata
 
 export default async function CollectionsPage({
   searchParams: { page },

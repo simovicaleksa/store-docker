@@ -5,8 +5,13 @@ import PagePagination from "@/components/shared/PagePagination"
 import { getProducts } from "@/services/product"
 import { getPagesCount } from "@/utils/pages"
 import { getQuerySearchParam, getSortOrderParam } from "@/utils/search"
+import { type Metadata } from "next"
 import { notFound } from "next/navigation"
 import React from "react"
+
+export const metadata: Metadata = {
+  title: "Search Products",
+}
 
 export default async function SearchPage({
   searchParams,

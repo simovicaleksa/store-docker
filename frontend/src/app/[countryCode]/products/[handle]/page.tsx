@@ -3,12 +3,35 @@ import { getProductByHandle } from "@/services/product"
 import ProductDetails from "@/components/product/details/ProductDetails"
 import { notFound } from "next/navigation"
 import ImageGallery from "@/components/product/gallery/ImageGallery"
+import type { Metadata } from "next"
 
-export default async function ProductPage({
-  params: { handle },
-}: {
+type Props = {
   params: { handle: string }
-}) {
+}
+
+export async function generateMetadata({
+  params: { handle },
+}: Props): Promise<Metadata> {
+  let title = "Product Page"
+  let images: string[] = []
+
+  const products = await getProductByHandle({ handle })
+  if (products?.length) {
+    const product = products[0]
+
+    title = `${product?.title}`
+    images = product?.thumbnail ? [product.thumbnail] : []
+  }
+
+  return {
+    title,
+    openGraph: {
+      images: images,
+    },
+  }
+}
+
+export default async function ProductPage({ params: { handle } }: Props) {
   const products = await getProductByHandle({ handle })
   if (!products?.length) return notFound()
   const product = products[0]

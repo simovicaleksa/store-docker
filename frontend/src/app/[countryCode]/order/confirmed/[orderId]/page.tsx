@@ -10,7 +10,7 @@ import React from "react"
 
 export const metadata: Metadata = {
   title: "Order Confirmed",
-  description: "You purchase was successful",
+  description: "You have successfully placed an order.",
 }
 
 export default async function OrderConfirmed({

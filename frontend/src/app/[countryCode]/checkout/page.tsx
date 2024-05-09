@@ -11,9 +11,14 @@ import ShippingPreview from "@/components/checkout/ShippingPreview"
 import CheckoutInfo from "@/components/checkout/info/CheckoutInfo"
 import { listShippingMethods } from "@/services/checkout"
 import { createPaymentSessions } from "@/services/checkout/actions"
+import { type Metadata } from "next"
 import { cookies } from "next/headers"
 import { redirect } from "next/navigation"
 import React from "react"
+
+export const metadata: Metadata = {
+  title: "Checkout",
+}
 
 export default async function CheckoutPage() {
   const cartId = cookies().get("_medusa_cart_id")?.value

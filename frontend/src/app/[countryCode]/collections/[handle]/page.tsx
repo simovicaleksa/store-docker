@@ -6,16 +6,45 @@ import { getCollections } from "@/services/collection"
 import { getProducts } from "@/services/product"
 import { getPagesCount } from "@/utils/pages"
 import { getQuerySearchParam, getSortOrderParam } from "@/utils/search"
+import { type Metadata } from "next"
 import { notFound } from "next/navigation"
 import React from "react"
+
+type Props = {
+  params: { handle: string }
+  searchParams: Record<string, string | string[] | undefined>
+}
+
+export async function generateMetadata({
+  params: { handle },
+}: Props): Promise<Metadata> {
+  let title = "Collection"
+  let images: string[] = []
+
+  const response = await getCollections({ limit: 1, handle: [handle] })
+  const collectionId = response?.collections[0]?.id
+  title = response?.collections[0]?.title ?? title
+
+  const productsResponse = await getProducts({
+    collection_id: [String(collectionId)],
+  })
+
+  images = productsResponse?.products[0]?.thumbnail
+    ? [productsResponse?.products[0]?.thumbnail]
+    : []
+
+  return {
+    title,
+    openGraph: {
+      images,
+    },
+  }
+}
 
 export default async function CollectionPage({
   params: { handle },
   searchParams: { page, query, sort },
-}: {
-  params: { handle: string }
-  searchParams: Record<string, string | string[] | undefined>
-}) {
+}: Props) {
   const perPage = 20
   const offset = (Number(page) || 1) * perPage - perPage
 
