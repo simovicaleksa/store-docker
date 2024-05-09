@@ -63,7 +63,11 @@ function MobileNavigation(props: { navigation: LinkType[] }) {
             {props.navigation.map((link) => (
               <li key={link.href}>
                 <SheetClose asChild>
-                  <Button asChild variant={"link"} className="px-0">
+                  <Button
+                    asChild
+                    variant={"link"}
+                    className="px-0 text-foreground"
+                  >
                     <LocalizedClientLink href={link.href}>
                       {link.title} <ArrowRight className="ml-2 size-4" />
                     </LocalizedClientLink>
@@ -84,7 +88,7 @@ function DesktopNavigation(props: { navigation: LinkType[] }) {
       <ul className="flex flex-row">
         {props.navigation.map((link) => (
           <li key={link.href}>
-            <Button asChild variant={"link"}>
+            <Button asChild variant={"link"} className="text-foreground">
               <LocalizedClientLink href={link.href}>
                 {link.title}
               </LocalizedClientLink>

@@ -7,7 +7,7 @@ import React from "react"
 
 export default async function HomePage() {
   const collectionResponse = await getCollections({ limit: 3 })
-  const productsResponse = await getProducts({ limit: 12 })
+  const productsResponse = await getProducts({ limit: 9 })
 
   return (
     <main className="min-h-screen w-full">
@@ -20,6 +20,8 @@ export default async function HomePage() {
       <section className="w-full bg-gradient-to-b from-secondary/10 via-secondary to-secondary/10">
         <HomeProductGrid products={productsResponse?.products} />
       </section>
+      <section className="bg-secondary"></section>
+      <section></section>
     </main>
   )
 }
