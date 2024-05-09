@@ -49,7 +49,7 @@ export default function ContactForm() {
           />
         </div>
         <div className="flex w-full justify-end pt-2">
-          <LoadingButton type="submit" isLoading>
+          <LoadingButton type="submit" isLoading={false}>
             Send Message
           </LoadingButton>
         </div>

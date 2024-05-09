@@ -3,6 +3,7 @@ import HomeProductGrid from "@/components/product/HomeProductGrid"
 import ContactForm from "@/components/sections/ContactForm"
 import HomeAllProducts from "@/components/sections/HomeAllProducts"
 import HomeHeroBanner from "@/components/sections/HomeHeroBanner"
+import { circleOverlapPattern, plusPattern } from "@/constants/patterns"
 import { getCollections } from "@/services/collection"
 import { getProducts } from "@/services/product"
 import React from "react"
@@ -22,7 +23,10 @@ export default async function HomePage() {
       <section className="w-full bg-gradient-to-b from-secondary/10 via-secondary to-secondary/10">
         <HomeProductGrid products={productsResponse?.products} />
       </section>
-      <section className="mt-10 bg-secondary">
+      <section
+        className="mt-10 bg-secondary"
+        style={{ backgroundImage: circleOverlapPattern }}
+      >
         <HomeAllProducts products={productsResponse?.products} />
       </section>
       <section>
