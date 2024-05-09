@@ -15,7 +15,10 @@ export default function FooterLink(props: FooterLinkProps) {
       <Button
         variant={"link"}
         asChild
-        className={cn("h-fit w-fit p-0", props.className)}
+        className={cn(
+          "h-fit w-fit p-0 text-primary-foreground",
+          props.className,
+        )}
       >
         <LocalizedClientLink href={props.href}>
           {props.children}

@@ -29,13 +29,13 @@ export default async function Footer() {
   const response = await getCollections({ limit: 5 })
 
   return (
-    <footer className="relative mt-20 w-full border-t pb-32 pt-10">
+    <footer className="relative mt-20 w-full border-t bg-primary/95 pb-32 pt-10 text-primary-foreground">
       <FooterCopyright />
 
       <div className="mx-auto grid w-full max-w-7xl grid-cols-1 gap-16 p-5 sm:grid-cols-2 xl:grid-cols-4">
         <div className="w-full space-y-3">
           <h1 className="text-xl font-semibold">Zen Store</h1>
-          <p className="text-muted-foreground text-sm">
+          <p className="text-sm text-muted-foreground">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua.
           </p>

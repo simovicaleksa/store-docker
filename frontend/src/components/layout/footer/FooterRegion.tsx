@@ -21,11 +21,11 @@ export default function FooterRegion() {
       <h1 className="mb-3 text-xl font-semibold">Country & Region</h1>
       <div className="flex flex-grow-0 flex-col">
         <Label className="mb-3">Shipping to</Label>
-        <Button variant={"outline"} onClick={handleClick}>
+        <Button variant={"default"} onClick={handleClick}>
           {`${getCountryName(countryCode)}`}
           <Flag countryCode={countryCode} />
         </Button>
-        <p className="text-muted-foreground mt-3 text-sm">
+        <p className="mt-3 text-sm text-muted-foreground">
           Select your shipping region for more accurate prices.
         </p>
       </div>
