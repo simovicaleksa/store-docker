@@ -1,15 +1,3 @@
-srv520376.hstgr.cloud:443 {
-  tls asesa.simic@gmail.com
-
-  reverse_proxy http://frontend:8000
-}
-
-srv520376.hstgr.cloud:9000 {
-  tls asesa.simic@gmail.com
-
-  reverse_proxy http://backend:9000
-}
-
 www.codexn.net {
   tls asesa.simic@gmail.com
 
