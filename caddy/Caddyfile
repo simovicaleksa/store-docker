@@ -33,3 +33,9 @@ codexn.net:9000 {
 
   reverse_proxy http://backend:9000
 }
+
+dashboard.codexn.net {
+  tls asesa.simic@gmail.com
+
+  reverse_proxy http://backend:9000/app
+}
