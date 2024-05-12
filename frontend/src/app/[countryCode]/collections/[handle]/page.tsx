@@ -66,7 +66,7 @@ export default async function CollectionPage({
   if (!productsResponse) return notFound()
 
   return (
-    <main className="mx-auto min-h-screen w-full max-w-7xl p-10">
+    <main className="mx-auto min-h-screen w-full max-w-7xl py-5 px-10">
       <div>
         <h1 className="text-2xl font-bold md:text-3xl">
           Search {response.collections[0]?.title.toLowerCase()}

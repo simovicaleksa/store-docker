@@ -31,7 +31,7 @@ export default async function SearchPage({
   if (!response) return notFound()
 
   return (
-    <main className="mx-auto min-h-screen w-full max-w-7xl p-10">
+    <main className="mx-auto min-h-screen w-full max-w-7xl px-10 py-5">
       <div>
         <h1 className="text-2xl font-bold md:text-3xl">Search products</h1>
         <p className="text-muted-foreground">See what products we can offer.</p>

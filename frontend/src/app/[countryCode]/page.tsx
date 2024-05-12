@@ -18,9 +18,7 @@ export default async function HomePage() {
         <HomeHeroBanner product={productsResponse?.products[0]} />
       </section>
       <section className="mx-auto w-full max-w-7xl p-5">
-        <div className="p-5">
-          <FeaturedCollections collections={collectionResponse?.collections} />
-        </div>
+        <FeaturedCollections collections={collectionResponse?.collections} />
       </section>
       <section className="w-full bg-gradient-to-b from-secondary/10 via-secondary to-secondary/10">
         <HomeProductGrid products={productsResponse?.products} />

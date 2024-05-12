@@ -27,7 +27,7 @@ export default async function CollectionsPage({
   if (!response) return notFound()
 
   return (
-    <main className="mx-auto min-h-screen w-full max-w-7xl space-y-10 p-10">
+    <main className="mx-auto min-h-screen w-full max-w-7xl space-y-10 px-10 py-5">
       <div>
         <h1 className="text-2xl font-bold md:text-3xl">Collections</h1>
         <p className="text-muted-foreground">Browse product collections.</p>

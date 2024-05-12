@@ -12,7 +12,7 @@ export default function HomeProductGrid({
   if (!products?.length) return null
 
   return (
-    <div className="mx-auto max-w-7xl p-10">
+    <div className="mx-auto max-w-7xl px-10 py-5">
       <div className="my-5 flex flex-row justify-between">
         <h2 className="text-3xl font-bold">Browse Products</h2>
         <Button variant={"secondary"} asChild>
