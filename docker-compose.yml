@@ -1,16 +1,5 @@
 version: "3.8"
 
-volumes:
-  caddy_data:
-  caddy_config:
-
-networks:
-  web:
-    external: true
-  internal:
-    external: false
-    driver: bridge
-
 services:
   backend:
     build:
@@ -24,6 +13,8 @@ services:
       - 9000
     networks:
       - internal
+    volumes:
+      - uploads:/backend/uploads
 
   postgres:
     image: postgres:16.2-alpine
@@ -70,4 +61,13 @@ services:
       - ./caddy/Caddyfile:/etc/caddy/Caddyfile
     networks:
       - internal
-      - web
+
+networks:
+  internal:
+    external: false
+    driver: bridge
+
+volumes:
+  caddy_data:
+  caddy_config:
+  uploads:
