@@ -8,7 +8,7 @@ services:
       - postgres
       - redis
     ports:
-      - 9000:9000
+      - 9000
     networks:
       - internal
     volumes:
@@ -43,7 +43,7 @@ services:
     image: getmeili/meilisearch:v1.8
     container_name: medusa-meilisearch
     ports:
-      - 7700:7700
+      - 7700
     environment:
       - MEILI_MASTER_KEY=meilisearch
       - MEILI_NO_ANALYTICS=true
