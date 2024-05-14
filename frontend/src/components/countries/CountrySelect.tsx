@@ -23,7 +23,14 @@ export default function CountrySelect({
       <SelectTrigger>
         <SelectValue placeholder="Select a country" />
       </SelectTrigger>
-      <SelectContent>
+      <SelectContent
+        ref={(ref) => {
+          if (!ref) return
+          ref.ontouchstart = (e) => {
+            e.preventDefault()
+          }
+        }}
+      >
         {countries.map((country) => (
           <SelectItem value={country.iso_2} key={country.id}>
             <span className="sr-only">{country.display_name}</span>

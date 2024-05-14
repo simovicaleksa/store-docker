@@ -41,7 +41,14 @@ export default function SearchSort(props: { className?: string }) {
       <SelectTrigger className={props.className}>
         <SelectValue placeholder="Sort by" />
       </SelectTrigger>
-      <SelectContent>
+      <SelectContent
+        ref={(ref) => {
+          if (!ref) return
+          ref.ontouchstart = (e) => {
+            e.preventDefault()
+          }
+        }}
+      >
         <SelectGroup>
           <SelectLabel>Sort by</SelectLabel>
           <SelectItem value="price_desc">Price descending</SelectItem>
