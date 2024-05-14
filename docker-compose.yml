@@ -1,3 +1,6 @@
+# MAKE SURE TO CHANGE MEILISEARCH KEY TO 16byte value
+# ALSO CHANGE IT INSIDE backend/.env
+
 services:
   backend:
     build:
