@@ -18,10 +18,24 @@ export const getProducts = cache(
 )
 
 export const searchProducts = cache(
-  async ({ ...params }: StoreGetProductsParams) => {
-    const response = await medusa.products.search({ ...params })
+  async ({ q, ...params }: StoreGetProductsParams) => {
+    let response = null
+    let idHits: string[] = []
 
-    return response
+    try {
+      const hits = (await medusa.products.search({ q })).hits as PricedProduct[]
+
+      hits.forEach((hit) => {
+        if (typeof hit.id === "string") idHits = [...idHits, hit.id]
+      })
+
+      // only search for products if there are id hits
+      if (hits.length) response = await getProducts({ id: idHits, ...params })
+    } catch (e) {
+      console.log(e)
+    } finally {
+      return response
+    }
   },
 )
 

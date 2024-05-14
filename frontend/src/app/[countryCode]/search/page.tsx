@@ -1,8 +1,9 @@
 import ProductGrid from "@/components/collections/ProductGrid"
+import NoResults from "@/components/search/NoResults"
 import SearchInput from "@/components/search/SearchInput"
 import SearchSort from "@/components/search/SearchSort"
 import PagePagination from "@/components/shared/PagePagination"
-import { getProducts } from "@/services/product"
+import { getProducts, searchProducts } from "@/services/product"
 import { getPagesCount } from "@/utils/pages"
 import { getQuerySearchParam, getSortOrderParam } from "@/utils/search"
 import { type Metadata } from "next"
@@ -21,14 +22,12 @@ export default async function SearchPage({
   const perPage = 20
   const offset = (Number(searchParams.page) || 1) * perPage - perPage
 
-  const response = await getProducts({
+  const response = await searchProducts({
     q: getQuerySearchParam(searchParams.query),
     order: getSortOrderParam(searchParams.sort),
     limit: perPage,
     offset,
   })
-
-  if (!response) return notFound()
 
   return (
     <main className="mx-auto min-h-screen w-full max-w-7xl px-10 py-5">
@@ -40,8 +39,16 @@ export default async function SearchPage({
         <SearchInput className="w-full" />
         <SearchSort className="w-full sm:w-[300px]" />
       </div>
-      <ProductGrid products={response.products} />
-      <PagePagination pages={getPagesCount(response.count, response.limit)} />
+      {response?.products.length ? (
+        <>
+          <ProductGrid products={response?.products} />
+          <PagePagination
+            pages={getPagesCount(response.count, response.limit)}
+          />
+        </>
+      ) : (
+        <NoResults />
+      )}
     </main>
   )
 }

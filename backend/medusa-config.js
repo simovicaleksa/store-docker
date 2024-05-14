@@ -64,6 +64,35 @@ const plugins = [
       order_placed_template: process.env.SENDGRID_ORDER_PLACED_ID,
     },
   },
+  {
+    resolve: `medusa-plugin-meilisearch`,
+    options: {
+      config: {
+        host: process.env.MEILISEARCH_HOST,
+        apiKey: process.env.MEILISEARCH_API_KEY,
+      },
+      settings: {
+        // index name
+        products: {
+          indexSettings: {
+            searchableAttributes: ["title", "description", "variant_sku"],
+            displayedAttributes: [
+              "id",
+              "title",
+              "description",
+              "variant_sku",
+              "thumbnail",
+              "handle",
+            ],
+          },
+          primaryKey: "id",
+          transform: (product) => ({
+            id: product.id,
+          }),
+        },
+      },
+    },
+  },
 ];
 
 const modules = {

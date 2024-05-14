@@ -1,9 +1,10 @@
 import ProductGrid from "@/components/collections/ProductGrid"
+import NoResults from "@/components/search/NoResults"
 import SearchInput from "@/components/search/SearchInput"
 import SearchSort from "@/components/search/SearchSort"
 import PagePagination from "@/components/shared/PagePagination"
 import { getCollections } from "@/services/collection"
-import { getProducts } from "@/services/product"
+import { getProducts, searchProducts } from "@/services/product"
 import { getPagesCount } from "@/utils/pages"
 import { getQuerySearchParam, getSortOrderParam } from "@/utils/search"
 import { type Metadata } from "next"
@@ -55,7 +56,7 @@ export default async function CollectionPage({
 
   if (!collectionId) return notFound()
 
-  const productsResponse = await getProducts({
+  const productsResponse = await searchProducts({
     collection_id: [collectionId],
     limit: perPage,
     offset,
@@ -63,10 +64,8 @@ export default async function CollectionPage({
     order: getSortOrderParam(sort),
   })
 
-  if (!productsResponse) return notFound()
-
   return (
-    <main className="mx-auto min-h-screen w-full max-w-7xl py-5 px-10">
+    <main className="mx-auto min-h-screen w-full max-w-7xl px-10 py-5">
       <div>
         <h1 className="text-2xl font-bold md:text-3xl">
           Search {response.collections[0]?.title.toLowerCase()}
@@ -77,10 +76,19 @@ export default async function CollectionPage({
         <SearchInput className="w-full" />
         <SearchSort className="w-full sm:w-[300px]" />
       </div>
-      <ProductGrid products={productsResponse?.products} />
-      <PagePagination
-        pages={getPagesCount(productsResponse.count, productsResponse.limit)}
-      />
+      {productsResponse?.products.length ? (
+        <>
+          <ProductGrid products={productsResponse?.products} />
+          <PagePagination
+            pages={getPagesCount(
+              productsResponse.count,
+              productsResponse.limit,
+            )}
+          />
+        </>
+      ) : (
+        <NoResults />
+      )}
     </main>
   )
 }

@@ -8,7 +8,7 @@ services:
       - postgres
       - redis
     ports:
-      - 9000
+      - 9000:9000
     networks:
       - internal
     volumes:
@@ -26,6 +26,8 @@ services:
       POSTGRES_DB: medusa-docker
     networks:
       - internal
+    volumes:
+      - db:/var/lib/postgresql/data
     restart: unless-stopped
 
   redis:
@@ -39,38 +41,43 @@ services:
 
   meilisearch:
     image: getmeili/meilisearch:v1.8
+    container_name: medusa-meilisearch
     ports:
-      - 7700
-    volumes:
-      - meili_data:/meilisearch/meili_data.ms
+      - 7700:7700
     environment:
       - MEILI_MASTER_KEY=meilisearch
+      - MEILI_NO_ANALYTICS=true
+      - MEILI_NO_SENTRY=true
+    volumes:
+      - meilisearch_data:/data.ms
+    networks:
+      - internal
     restart: unless-stopped
 
-  # frontend:
-  #   build:
-  #     context: ./frontend
-  #     dockerfile: ./docker/Dockerfile
-  #   container_name: medusa-frontend
-  #   ports:
-  #     - 8000
-  #   depends_on:
-  #     - backend
-  #   networks:
-  #     - internal
-  #   restart: unless-stopped
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: ./docker/Dockerfile
+    container_name: medusa-frontend
+    ports:
+      - 8000
+    depends_on:
+      - backend
+    networks:
+      - internal
+    restart: unless-stopped
 
-  # caddy:
-  #   image: caddy:2.8-alpine
-  #   container_name: medusa-caddy
-  #   ports:
-  #     - 443:443
-  #     - 9000:9000
-  #   volumes:
-  #     - ./caddy/Caddyfile:/etc/caddy/Caddyfile
-  #   networks:
-  #     - internal
-  #   restart: unless-stopped
+  caddy:
+    image: caddy:2.8-alpine
+    container_name: medusa-caddy
+    ports:
+      - 443:443
+      - 9000:9000
+    volumes:
+      - ./caddy/Caddyfile:/etc/caddy/Caddyfile
+    networks:
+      - internal
+    restart: unless-stopped
 
 networks:
   internal:
@@ -81,4 +88,6 @@ volumes:
   caddy_data:
   caddy_config:
   uploads:
-  meili_data:
+  meilisearch_data:
+  db:
+    driver: local
