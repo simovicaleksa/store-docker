@@ -37,30 +37,40 @@ services:
       - internal
     restart: unless-stopped
 
-  frontend:
-    build:
-      context: ./frontend
-      dockerfile: ./docker/Dockerfile
-    container_name: medusa-frontend
+  meilisearch:
+    image: getmeili/meilisearch:v1.8
     ports:
-      - 8000
-    depends_on:
-      - backend
-    networks:
-      - internal
+      - 7700
+    volumes:
+      - meili_data:/meilisearch/meili_data.ms
+    environment:
+      - MEILI_MASTER_KEY=meilisearch
     restart: unless-stopped
 
-  caddy:
-    image: caddy:2.8-alpine
-    container_name: medusa-caddy
-    ports:
-      - 443:443
-      - 9000:9000
-    volumes:
-      - ./caddy/Caddyfile:/etc/caddy/Caddyfile
-    networks:
-      - internal
-    restart: unless-stopped
+  # frontend:
+  #   build:
+  #     context: ./frontend
+  #     dockerfile: ./docker/Dockerfile
+  #   container_name: medusa-frontend
+  #   ports:
+  #     - 8000
+  #   depends_on:
+  #     - backend
+  #   networks:
+  #     - internal
+  #   restart: unless-stopped
+
+  # caddy:
+  #   image: caddy:2.8-alpine
+  #   container_name: medusa-caddy
+  #   ports:
+  #     - 443:443
+  #     - 9000:9000
+  #   volumes:
+  #     - ./caddy/Caddyfile:/etc/caddy/Caddyfile
+  #   networks:
+  #     - internal
+  #   restart: unless-stopped
 
 networks:
   internal:
@@ -71,3 +81,4 @@ volumes:
   caddy_data:
   caddy_config:
   uploads:
+  meili_data:
