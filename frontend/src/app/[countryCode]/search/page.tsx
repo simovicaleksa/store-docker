@@ -3,11 +3,10 @@ import NoResults from "@/components/search/NoResults"
 import SearchInput from "@/components/search/SearchInput"
 import SearchSort from "@/components/search/SearchSort"
 import PagePagination from "@/components/shared/PagePagination"
-import { getProducts, searchProducts } from "@/services/product"
+import { searchProducts } from "@/services/product"
 import { getPagesCount } from "@/utils/pages"
 import { getQuerySearchParam, getSortOrderParam } from "@/utils/search"
 import { type Metadata } from "next"
-import { notFound } from "next/navigation"
 import React from "react"
 
 export const metadata: Metadata = {
