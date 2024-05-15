@@ -11,7 +11,7 @@ services:
       - postgres
       - redis
     ports:
-      - 9000:9000
+      - 9000
     networks:
       - internal
     volumes:
@@ -57,30 +57,30 @@ services:
       - internal
     restart: unless-stopped
 
-  # frontend:
-  #   build:
-  #     context: ./frontend
-  #     dockerfile: ./docker/Dockerfile
-  #   container_name: medusa-frontend
-  #   ports:
-  #     - 8000
-  #   depends_on:
-  #     - backend
-  #   networks:
-  #     - internal
-  #   restart: unless-stopped
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: ./docker/Dockerfile
+    container_name: medusa-frontend
+    ports:
+      - 8000
+    depends_on:
+      - backend
+    networks:
+      - internal
+    restart: unless-stopped
 
-  # caddy:
-  #   image: caddy:2.8-alpine
-  #   container_name: medusa-caddy
-  #   ports:
-  #     - 443:443
-  #     - 9000:9000
-  #   volumes:
-  #     - ./caddy/Caddyfile:/etc/caddy/Caddyfile
-  #   networks:
-  #     - internal
-  #   restart: unless-stopped
+  caddy:
+    image: caddy:2.8-alpine
+    container_name: medusa-caddy
+    ports:
+      - 443:443
+      - 9000:9000
+    volumes:
+      - ./caddy/Caddyfile:/etc/caddy/Caddyfile
+    networks:
+      - internal
+    restart: unless-stopped
 
 networks:
   internal:
