@@ -29,6 +29,10 @@ const navigation: LinkType[] = [
     title: "Collections",
     href: "/collections",
   },
+  {
+    title: "Track Order",
+    href: "/order/track",
+  },
 ]
 
 export default function HeaderNavigation() {

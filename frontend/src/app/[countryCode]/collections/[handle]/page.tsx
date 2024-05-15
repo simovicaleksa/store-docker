@@ -65,7 +65,7 @@ export default async function CollectionPage({
   })
 
   return (
-    <main className="mx-auto min-h-screen w-full max-w-7xl px-10 py-5">
+    <main className="mx-auto min-h-screen w-full max-w-7xl p-5">
       <div>
         <h1 className="text-2xl font-bold md:text-3xl">
           Search {response.collections[0]?.title.toLowerCase()}
@@ -78,7 +78,7 @@ export default async function CollectionPage({
       </div>
       {productsResponse?.products.length ? (
         <>
-          <ProductGrid products={productsResponse?.products} />
+          <ProductGrid className="px-5" products={productsResponse?.products} />
           <PagePagination
             pages={getPagesCount(
               productsResponse.count,

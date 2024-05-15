@@ -21,7 +21,7 @@ export default function FooterRegion() {
       <h1 className="mb-3 text-xl font-semibold">Country & Region</h1>
       <div className="flex flex-grow-0 flex-col">
         <Label className="mb-3">Shipping to</Label>
-        <Button variant={"default"} onClick={handleClick}>
+        <Button variant={"outline"} onClick={handleClick}>
           {`${getCountryName(countryCode)}`}
           <Flag countryCode={countryCode} />
         </Button>

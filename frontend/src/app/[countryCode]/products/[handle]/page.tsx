@@ -39,8 +39,8 @@ export default async function ProductPage({ params: { handle } }: Props) {
 
   return (
     <main className="min-h-screen w-full">
-      <section className="mx-auto flex w-full max-w-3xl flex-col gap-5 px-10 py-5 xl:max-w-7xl xl:flex-row">
-        <ImageGallery images={product.images} />
+      <section className="mx-auto flex w-full max-w-3xl flex-col gap-5 px-5 py-5 xl:max-w-7xl xl:flex-row">
+        <ImageGallery images={product.images} className="px-5" />
         <ProductDetails
           className="h-fit w-full xl:sticky xl:top-28"
           product={product}

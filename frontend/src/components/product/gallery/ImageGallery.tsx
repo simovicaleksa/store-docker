@@ -5,12 +5,14 @@ import React, { useCallback, useEffect, useState } from "react"
 import GalleryMain from "./GalleryMain"
 import GalleryThumbs from "./GalleryThumbs"
 import { type CarouselApi } from "@/components/shared/ui/carousel"
+import { cn } from "@/lib/utils"
 
 type ImageGalleryProps = {
   images: Image[] | undefined
+  className?: string
 }
 
-export default function ImageGallery({ images }: ImageGalleryProps) {
+export default function ImageGallery({ images, className }: ImageGalleryProps) {
   const [mainApi, setMainApi] = useState<CarouselApi>()
   const [thumbsApi, setThumbsApi] = useState<CarouselApi>()
   const [selected, setSelected] = useState<number>(0)
@@ -37,7 +39,7 @@ export default function ImageGallery({ images }: ImageGalleryProps) {
   if (!images?.length) return null
 
   return (
-    <div className="w-full space-y-2">
+    <div className={cn("w-full space-y-2", className)}>
       <GalleryMain images={images} setMainApi={setMainApi} />
       <GalleryThumbs
         images={images}

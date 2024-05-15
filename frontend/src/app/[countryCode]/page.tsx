@@ -3,7 +3,7 @@ import HomeProductGrid from "@/components/product/HomeProductGrid"
 import ContactForm from "@/components/sections/ContactForm"
 import HomeAllProducts from "@/components/sections/HomeAllProducts"
 import HomeHeroBanner from "@/components/sections/HomeHeroBanner"
-import { circleOverlapPattern } from "@/constants/patterns"
+import { circleOverlapPattern, groovyPattern } from "@/constants/patterns"
 import { getCollections } from "@/services/collection"
 import { getProducts } from "@/services/product"
 import React from "react"
@@ -14,7 +14,10 @@ export default async function HomePage() {
 
   return (
     <main className="min-h-screen w-full">
-      <section className="mb-10 w-full bg-secondary p-5">
+      <section
+        className="mb-10 w-full bg-muted-foreground/15 p-5"
+        style={{ backgroundImage: groovyPattern }}
+      >
         <HomeHeroBanner product={productsResponse?.products[0]} />
       </section>
       <section className="mx-auto w-full max-w-7xl p-5">

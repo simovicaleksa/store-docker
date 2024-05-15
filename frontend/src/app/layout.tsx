@@ -1,6 +1,7 @@
 import Overlay from "@/components/layout/Overlay"
 import Footer from "@/components/layout/footer/Footer"
 import Header from "@/components/layout/header/Header"
+import { storeName } from "@/constants/store"
 import JotaiProvider from "@/providers/jotai/JotaiProvider"
 import "@/styles/globals.css"
 
@@ -12,8 +13,8 @@ const inter = Inter({
 })
 
 export const metadata = {
-  title: "Zen Store | Better Shopping",
-  description: "Zen Store is an e-commerce store of the future.",
+  title: `${storeName} | Better Shopping`,
+  description: `${storeName} is an e-commerce store of the future.`,
   icons: [{ rel: "icon", url: "/favicon.ico" }],
 }
 

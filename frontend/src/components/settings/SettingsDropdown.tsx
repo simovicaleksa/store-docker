@@ -9,7 +9,7 @@ import {
   DropdownMenuTrigger,
 } from "../shared/ui/dropdown-menu"
 import { Button } from "../shared/ui/button"
-import { Globe, Settings } from "lucide-react"
+import { Globe, Cog } from "lucide-react"
 import useCountriesDialog from "@/hooks/countries/useCountriesDialog"
 import Flag from "../shared/ui/flag"
 import useCountry from "@/hooks/countries/useCountry"
@@ -23,7 +23,7 @@ export default function SettingsDropdown() {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant={"ghost"} size={"icon"} aria-label="open settings">
-          <Settings />
+          <Cog />
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent>

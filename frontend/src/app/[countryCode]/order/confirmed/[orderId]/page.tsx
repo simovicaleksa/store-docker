@@ -32,7 +32,7 @@ export default async function OrderConfirmed({
     .replace(/,/g, "")
 
   return (
-    <main className="mx-auto w-full max-w-4xl space-y-10 p-5">
+    <main className="mx-auto mb-28 w-full max-w-4xl space-y-10 p-5">
       <div className="space-y-0">
         <h1 className="text-3xl font-semibold">Thank you!</h1>
         <h2 className="text-xl">Your order was placed successfully.</h2>
