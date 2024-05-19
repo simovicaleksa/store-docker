@@ -32,6 +32,7 @@
     "@medusajs/event-bus-redis": "latest",
     "@medusajs/file-local": "latest",
     "@medusajs/medusa": "latest",
+    "@rsc-labs/medusa-store-analytics": "^0.12.2",
     "@tanstack/react-query": "4.22.0",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
