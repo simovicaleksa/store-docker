@@ -26,4 +26,4 @@ done
 shift $((OPTIND - 1))
 
 # Run docker compose with the prod compose file
-docker compose -f compose.prod.yml up $DETACHED "$@"
+docker compose -f compose.prod.yml up --build $DETACHED "$@"

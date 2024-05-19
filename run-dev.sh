@@ -26,4 +26,4 @@ done
 shift $((OPTIND - 1))
 
 # Run docker compose with the dev compose file
-docker compose -f compose.dev.yml up $DETACHED "$@"
+docker compose -f compose.dev.yml up --build $DETACHED "$@"
