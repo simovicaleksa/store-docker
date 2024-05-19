@@ -27,7 +27,9 @@ export default function SearchInput(props: { className?: string }) {
   }, [searchParams])
 
   useEffect(() => {
-    router.replace(pathname + "?" + createQueryString("query", searchQuery))
+    router.replace(pathname + "?" + createQueryString("query", searchQuery), {
+      scroll: false,
+    })
   }, [router, pathname, createQueryString, searchQuery])
 
   return (
@@ -37,7 +39,7 @@ export default function SearchInput(props: { className?: string }) {
         props.className,
       )}
     >
-      <SearchIcon className="text-muted-foreground pointer-events-none absolute size-5 translate-x-3" />
+      <SearchIcon className="pointer-events-none absolute size-5 translate-x-3 text-muted-foreground" />
       <Input
         value={searchQuery}
         onChange={(e) => onSearchChange(e)}
