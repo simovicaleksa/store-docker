@@ -33,7 +33,7 @@ export default function SearchSort(props: { className?: string }) {
   }, [searchParams])
 
   useEffect(() => {
-    router.replace(pathname + "?" + createQueryString("sort", sortBy))
+    router.replace(pathname + "?" + createQueryString("sort", sortBy), {scroll: false})
   }, [router, pathname, createQueryString, sortBy])
 
   return (

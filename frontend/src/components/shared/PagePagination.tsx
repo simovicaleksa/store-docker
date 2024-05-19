@@ -33,7 +33,9 @@ export default function PagePagination({ pages }: { pages: number }) {
   // generate page search param if it does not already exist
   useEffect(() => {
     if (!searchParams.has("page")) {
-      router.replace(pathname + "?" + createQueryString("page", "1"))
+      router.replace(pathname + "?" + createQueryString("page", "1"), {
+        scroll: false,
+      })
     }
   }, [searchParams, createQueryString, pathname, router])
 
