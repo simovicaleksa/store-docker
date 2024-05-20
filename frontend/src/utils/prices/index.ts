@@ -1,3 +1,5 @@
+import { noDivisionCurrencies } from "@/constants/countries"
+
 const convertToDecimal = (amount: number) => {
   return Math.floor(amount) / 100
 }
@@ -7,14 +9,17 @@ export function formatAmount(
   currencyCode: string | null | undefined,
   fallback = "Get a quote",
 ) {
-  if (typeof amount !== "number" || !currencyCode) return fallback
+  let currencyAmount = amount
 
-  const decimalAmount = convertToDecimal(amount)
+  if (typeof currencyAmount !== "number" || !currencyCode) return fallback
+
+  if (!noDivisionCurrencies.includes(currencyCode))
+    currencyAmount = convertToDecimal(currencyAmount)
 
   const formatter = new Intl.NumberFormat("en-US", {
     style: "currency",
     currency: currencyCode,
   })
 
-  return formatter.format(decimalAmount)
+  return formatter.format(currencyAmount)
 }
