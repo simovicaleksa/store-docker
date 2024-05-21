@@ -13,15 +13,16 @@ export function formatAmount(
 
   if (typeof currencyAmount !== "number" || !currencyCode) return fallback
 
-  if (!noDivisionCurrencies.includes(currencyCode))
-    currencyAmount = convertToDecimal(currencyAmount)
+  const isNoDivisionCurrency = noDivisionCurrencies.includes(currencyCode)
+
+  if (!isNoDivisionCurrency) currencyAmount = convertToDecimal(currencyAmount)
 
   currencyAmount = Math.floor(currencyAmount)
 
   const formatter = new Intl.NumberFormat("en-US", {
     style: "currency",
     currency: currencyCode,
-    maximumFractionDigits: 0,
+    maximumFractionDigits: isNoDivisionCurrency ? 0 : 2,
   })
 
   return formatter.format(currencyAmount)
