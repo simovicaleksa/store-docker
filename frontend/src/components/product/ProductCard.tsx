@@ -44,7 +44,9 @@ export default function ProductCard({
             className="aspect-square self-center object-scale-down p-2 duration-200 group-hover:scale-105"
             src={thumbnail}
           />
-          <Badge className="absolute bottom-2 right-2">{price}</Badge>
+          <Badge className="pointer-events-none absolute bottom-2 right-2 bg-foreground text-background">
+            {price}
+          </Badge>
         </CardHeader>
         <CardFooter className="flex flex-col items-start space-y-1">
           <CardTitle>{title}</CardTitle>
