@@ -56,18 +56,18 @@ export default function ProductDetails({
           <CardHeader>
             <div className="flex flex-row gap-5">
               <ProductThumbnail
-                className="bg-secondary hidden aspect-square rounded-[var(--radius)] object-scale-down p-3 md:flex"
+                className="hidden aspect-square rounded-[var(--radius)] bg-secondary object-scale-down p-3 md:flex"
                 src={product.thumbnail}
                 width={120}
                 height={120}
               />
               <div className="flex flex-col gap-2">
                 <div className="space-y-1">
-                  <CardTitle>{product.title}</CardTitle>
+                  <CardTitle className="font-bold">{product.title}</CardTitle>
                   <CardDescription>{product.collection?.title}</CardDescription>
                 </div>
 
-                <span className="text-xl font-bold leading-none tracking-tight">
+                <span className="text-xl font-semibold leading-none tracking-tight">
                   {variant
                     ? getVariantPrice(variant, currencyCode)
                     : cheapestPrice}
