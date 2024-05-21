@@ -16,9 +16,10 @@ export default function Header() {
   return (
     <header
       className={cn(
-        "sticky top-0 z-50 w-full border-b bg-background p-5 text-secondary-foreground duration-200",
+        "sticky top-0 z-50 w-full border-b bg-background p-5 text-secondary-foreground shadow duration-200",
         {
-          "-translate-y-20": scrollDirection === "down" && scrollY > 500,
+          "-translate-y-20 duration-100":
+            scrollDirection === "down" && scrollY > 500,
         },
       )}
     >
