@@ -49,9 +49,7 @@ export default async function ProductPage({ params: { handle } }: Props) {
       </section>
       <section className="mx-auto flex w-full max-w-3xl flex-col gap-5 border-t px-5 py-20 xl:max-w-7xl">
         <div>
-          <h1 className="text-3xl font-bold md:text-4xl">
-            You might also like:
-          </h1>
+          <h1 className="text-3xl font-semibold">You might also like:</h1>
           <p className="text-muted-foreground">
             Take a look at more of our products.
           </p>
