@@ -16,6 +16,8 @@ export function formatAmount(
   if (!noDivisionCurrencies.includes(currencyCode))
     currencyAmount = convertToDecimal(currencyAmount)
 
+  currencyAmount = Math.floor(currencyAmount)
+
   const formatter = new Intl.NumberFormat("en-US", {
     style: "currency",
     currency: currencyCode,
