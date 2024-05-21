@@ -8,6 +8,8 @@ export default function useScrollY() {
   const isScrolled = scrollY !== 0
 
   useEffect(() => {
+    if (typeof window === "undefined") return
+
     function handleScroll() {
       const currentScroll = Math.floor(window.scrollY)
 
