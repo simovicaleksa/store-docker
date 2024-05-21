@@ -18,7 +18,6 @@ export default function Header() {
       className={cn(
         "sticky top-0 z-50 w-full border-b bg-background p-5 text-secondary-foreground duration-200",
         {
-          "py-2": scrollY !== 0,
           "-translate-y-20": scrollDirection === "down" && scrollY > 500,
         },
       )}
