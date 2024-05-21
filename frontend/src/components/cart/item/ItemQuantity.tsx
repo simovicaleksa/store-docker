@@ -61,13 +61,13 @@ export default function ItemQuantity() {
         <Button
           variant={"link"}
           size={"icon"}
-          className="h-fit w-fit p-2 px-3"
+          className="h-fit w-fit p-2 px-3 text-foreground"
           onClick={handleDecreaseQuantity}
           disabled={isLoading}
         >
           -
         </Button>
-        <span className="text-muted-foreground text-sm">
+        <span className="text-sm text-muted-foreground">
           {isLoading ? (
             <Loader className="size-4 animate-spin" />
           ) : (
@@ -77,7 +77,7 @@ export default function ItemQuantity() {
         <Button
           variant={"link"}
           size={"icon"}
-          className="h-fit w-fit p-2 px-3"
+          className="h-fit w-fit p-2 px-3 text-foreground"
           onClick={handleIncreaseQuantity}
           disabled={isLoading}
         >
