@@ -4,6 +4,7 @@ import ProductDetails from "@/components/product/details/ProductDetails"
 import { notFound } from "next/navigation"
 import ImageGallery from "@/components/product/gallery/ImageGallery"
 import type { Metadata } from "next"
+import SimilarProducts from "@/components/product/SimilarProducts"
 
 type Props = {
   params: { handle: string }
@@ -45,6 +46,17 @@ export default async function ProductPage({ params: { handle } }: Props) {
           className="h-fit w-full xl:sticky xl:top-28"
           product={product}
         />
+      </section>
+      <section className="mx-auto flex w-full max-w-3xl flex-col gap-5 border-t px-5 py-20 xl:max-w-7xl">
+        <div>
+          <h1 className="text-3xl font-bold md:text-4xl">
+            You might also like:
+          </h1>
+          <p className="text-muted-foreground">
+            Take a look at more of our products.
+          </p>
+        </div>
+        <SimilarProducts collectionId={product.collection_id} />
       </section>
     </main>
   )
