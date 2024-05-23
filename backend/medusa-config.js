@@ -34,6 +34,13 @@ const STORE_CORS = process.env.STORE_CORS || "http://localhost:8000";
 const DATABASE_URL =
   process.env.DATABASE_URL || "postgres://localhost/medusa-starter-default";
 
+// Stripe variables needed for online payments to work
+
+const STRIPE_API_KEY = process.env.STRIPE_API_KEY ?? undefined;
+const STRIPE_WEBHOOK_SECRET = process.env.STRIPE_WEBHOOK_SECRET ?? undefined;
+
+// Redis environment variables
+
 const REDIS_URL = process.env.REDIS_URL || "redis://localhost:6379";
 
 const plugins = [
@@ -97,6 +104,13 @@ const plugins = [
     resolve: `@rsc-labs/medusa-store-analytics`,
     options: {
       enableUI: true,
+    },
+  },
+  {
+    resolve: `medusa-payment-stripe`,
+    options: {
+      api_key: STRIPE_API_KEY,
+      webhook_secret: STRIPE_WEBHOOK_SECRET,
     },
   },
 ];
