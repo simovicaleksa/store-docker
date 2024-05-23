@@ -27,5 +27,4 @@ export const paymentInfoMap: Record<
 }
 
 export const STRIPE_PUBLISH_KEY =
-  process.env.NEXT_PUBLIC_STRIPE_PUBLISH_KEY ??
-  "pk_test_51OCOKVIDE8iB0cPm24Q6TAyTkvqC5p1DxbqcOgNSuR2fbPWdwxCZtvgj1eOTuCz05FkhZSaZAKCUBJBxcF26zQHv00SjDjnk9K"
+  process.env.NEXT_PUBLIC_STRIPE_PUBLISH_KEY ?? ""
