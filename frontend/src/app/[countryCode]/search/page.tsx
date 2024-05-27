@@ -2,6 +2,7 @@ import ProductGrid from "@/components/collections/ProductGrid"
 import NoResults from "@/components/search/NoResults"
 import SearchInput from "@/components/search/SearchInput"
 import SearchSort from "@/components/search/SearchSort"
+import ViewType from "@/components/search/ViewType"
 import PagePagination from "@/components/shared/PagePagination"
 import { searchProducts } from "@/services/product"
 import { getPagesCount } from "@/utils/pages"
@@ -35,12 +36,15 @@ export default async function SearchPage({
         <p className="text-muted-foreground">See what products we can offer.</p>
       </div>
       <div className="flex flex-col gap-2 py-5 sm:flex-row">
-        <SearchInput className="w-full" />
-        <SearchSort className="w-full sm:w-[300px]" />
+        <SearchInput className="min-w-[320px] flex-grow" />
+        <div className="flex flex-grow-0 flex-row gap-2">
+          <ViewType className="w-full sm:min-w-[150px]" />
+          <SearchSort className="w-full sm:min-w-[150px]" />
+        </div>
       </div>
       {response?.products.length ? (
         <>
-          <ProductGrid className="px-5" products={response?.products} />
+          <ProductGrid products={response?.products} />
           <PagePagination
             pages={getPagesCount(response.count, response.limit)}
           />
