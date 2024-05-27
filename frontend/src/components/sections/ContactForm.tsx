@@ -5,8 +5,13 @@ import { Input } from "../shared/ui/input"
 import { Label } from "../shared/ui/label"
 import { Textarea } from "../shared/ui/textarea"
 import LoadingButton from "../shared/ui/loading-button"
+import { cn } from "@/lib/utils"
 
-export default function ContactForm() {
+type ContactFormProps = {
+  className?: string
+}
+
+export default function ContactForm(props: ContactFormProps) {
   const [email, setEmail] = useState<string>("")
   const [message, setMessage] = useState<string>("")
 
@@ -19,7 +24,12 @@ export default function ContactForm() {
   }
 
   return (
-    <div className="mx-auto min-h-[400px] max-w-7xl p-5 py-10">
+    <div
+      className={cn(
+        "mx-auto min-h-[400px] max-w-7xl p-5 py-10",
+        props.className,
+      )}
+    >
       <div className="flex w-full flex-col items-center justify-center text-center">
         <h2 className="text-3xl font-bold">Contact Us</h2>
         <p className="text-muted-foreground">
