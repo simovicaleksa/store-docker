@@ -64,11 +64,29 @@ const plugins = [
     },
   },
   {
-    resolve: `medusa-plugin-sendgrid`,
-    options: {
-      api_key: process.env.SENDGRID_API_KEY,
-      from: process.env.SENDGRID_FROM,
-      order_placed_template: process.env.SENDGRID_ORDER_PLACED_ID,
+    fromEmail: process.env.EMAIL_SENDER_ADDRESS,
+    // this object is input directly into nodemailer.createtransport(), so anything that works there should work here
+    // see: https://nodemailer.com/smtp/#1-single-connection and https://nodemailer.com/transports/
+    transport: {
+      host: process.env.EMAIL_HOST,
+      port: 587,
+      secureConnection: false,
+      auth: {
+        user: process.env.EMAIL_SENDER_ADDRESS,
+        pass: process.env.EMAIL_SENDER_PASSWORD,
+      },
+      tls: {
+        ciphers: "SSLv3",
+      },
+      requireTLS: true,
+    },
+    // this is the path where your email templates are stored
+    emailTemplatePath: "data/emailTemplates",
+    // this maps the folder/template name to a medusajs event to use the right template
+    // only the events that are registered here are subscribed to
+    templateMap: {
+      // "eventname": "templatename",
+      "order.placed": "orderplaced",
     },
   },
   {
