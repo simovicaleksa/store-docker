@@ -4,6 +4,7 @@ import Header from "@/components/layout/header/Header"
 import { storeName } from "@/constants/store"
 import JotaiProvider from "@/providers/jotai/JotaiProvider"
 import "@/styles/globals.css"
+import { type Metadata } from "next"
 
 import { Inter } from "next/font/google"
 
@@ -25,7 +26,7 @@ const inter = Inter({
 //   weight: ["300", "400", "500", "600", "700", "800", "900"],
 // })
 
-export const metadata = {
+export const metadata: Metadata = {
   title: `${storeName} | Better Shopping`,
   description: `${storeName} is an e-commerce store of the future.`,
 }
@@ -37,6 +38,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/favicon.ico" />
+      </head>
       <body className={`${inter.className}`}>
         <JotaiProvider>
           <Overlay />
