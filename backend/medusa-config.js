@@ -3,7 +3,7 @@ const dotenv = require("dotenv");
 let ENV_FILE_NAME = "";
 switch (process.env.NODE_ENV) {
   case "production":
-    ENV_FILE_NAME = ".env.production";
+    ENV_FILE_NAME = ".env";
     break;
   case "staging":
     ENV_FILE_NAME = ".env.staging";
