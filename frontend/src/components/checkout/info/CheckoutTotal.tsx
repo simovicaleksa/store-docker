@@ -10,12 +10,19 @@ import {
 import useCurrencyCode from "@/hooks/countries/useCurrencyCode"
 import { formatAmount } from "@/utils/prices"
 import { type CartType } from "@/types/cart"
+import { cn } from "@/lib/utils"
 
-export default function CheckoutTotal({ cart }: { cart: CartType | null }) {
+export default function CheckoutTotal({
+  cart,
+  className,
+}: {
+  cart: CartType | null
+  className?: string
+}) {
   const { currencyCode } = useCurrencyCode()
 
   return (
-    <Table className="bg-secondary rounded-sm">
+    <Table className={cn("rounded-sm bg-secondary", className)}>
       <TableBody>
         <TableRow>
           <TableCell className="text-start">Subtotal</TableCell>
@@ -35,7 +42,7 @@ export default function CheckoutTotal({ cart }: { cart: CartType | null }) {
             {formatAmount(cart?.tax_total, currencyCode, "No taxes")}
           </TableCell>
         </TableRow>
-        <TableRow className="text-foreground text-xl font-semibold">
+        <TableRow className="text-xl font-semibold text-foreground">
           <TableCell className="text-start">Total</TableCell>
           <TableCell className="text-end">
             {formatAmount(cart?.total, currencyCode, "Get a quote")}
