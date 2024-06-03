@@ -15,20 +15,20 @@ export default function CheckoutCart({ cart }: { cart: CartType | null }) {
         <div className="flex flex-row justify-between" key={item.id}>
           <div className="flex flex-row space-x-3">
             <ProductThumbnail
-              className="bg-secondary rounded-[var(--radius)] border object-scale-down p-2"
+              className="rounded-[var(--radius)] border bg-secondary object-scale-down p-2"
               width={100}
               height={100}
               src={item.thumbnail}
             />
             <div className="flex flex-col">
               <h1 className="text-lg font-semibold">{item.title}</h1>
-              <p className="text-muted-foreground text-sm">
+              <p className="text-sm text-muted-foreground">
                 {item.variant.title}
               </p>
             </div>
           </div>
           <div className="flex flex-col items-end p-2 text-end">
-            <span className="text-muted-foreground text-sm">{`${item.quantity}x ${formatAmount(item.unit_price, currencyCode, "Get a quote")}`}</span>
+            <span className="text-sm text-muted-foreground">{`${item.quantity}x ${formatAmount(item.unit_price, currencyCode, "Get a quote")}`}</span>
             <span className="font-semibold">{`${formatAmount(item.total, currencyCode)}`}</span>
           </div>
         </div>
