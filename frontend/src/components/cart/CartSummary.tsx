@@ -17,7 +17,7 @@ export default function CartSummary({ cart }: { cart: CartType | null }) {
   if (typeof cart?.total !== "number") return null
 
   return (
-    <Table className="mt-10 divide-y rounded-[var(--radius)] border">
+    <Table className="mt-10 divide-y rounded-[var(--radius)] border-y">
       <TableHeader>
         <TableRow>
           <TableHead>Type</TableHead>
@@ -26,12 +26,22 @@ export default function CartSummary({ cart }: { cart: CartType | null }) {
       </TableHeader>
       <TableBody>
         <TableRow>
-          <TableCell>Total</TableCell>
-          <TableCell>{formatAmount(cart.total, currencyCode)}</TableCell>
+          <TableCell>Subtotal</TableCell>
+          <TableCell>{formatAmount(cart.subtotal, currencyCode)}</TableCell>
         </TableRow>
         <TableRow>
           <TableCell>Shipping</TableCell>
-          <TableCell>Calculated at checkout</TableCell>
+          <TableCell>Calculated at checkout.</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell>Tax</TableCell>
+          <TableCell>{formatAmount(cart.tax_total, currencyCode)}</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell className="font-semibold">Total</TableCell>
+          <TableCell className="font-semibold">
+            {formatAmount(cart.total, currencyCode)}
+          </TableCell>
         </TableRow>
       </TableBody>
     </Table>
