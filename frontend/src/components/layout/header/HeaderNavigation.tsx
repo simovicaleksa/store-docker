@@ -30,12 +30,16 @@ const navigation: LinkType[] = [
     href: "/collections",
   },
   {
+    title: "Track Order",
+    href: "/order/track",
+  },
+  {
     title: "Contact",
     href: "/contact",
   },
   {
-    title: "Track Order",
-    href: "/order/track",
+    title: "About",
+    href: "/about",
   },
 ]
 

@@ -25,6 +25,10 @@ const usefulLinks: LinkType[] = [
     title: "Contact",
     href: "/contact",
   },
+  {
+    title: "About",
+    href: "/about",
+  },
 ]
 
 export default async function Footer() {
