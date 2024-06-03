@@ -22,10 +22,12 @@ export default function HomeHeroBanner({
         <div className="flex w-full flex-col">
           <div className="space-y-2">
             <h1 className="text-4xl font-bold lg:text-5xl">
-              Shopping is better with us!
+              Our websites drive results!
+              {/* Shopping is better with us! */}
             </h1>
-            <p className="font-semibold text-muted-foreground lg:text-xl">
-              Buying things online was never easier.
+            <p className="text-muted-foreground lg:text-xl">
+              {/* Buying things online was never easier. */}
+              This is a demo of your future online store.
             </p>
           </div>
           <div className="mt-5 flex flex-row flex-wrap gap-2">
