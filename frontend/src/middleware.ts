@@ -81,7 +81,12 @@ async function getCountryCode(
 
 export async function middleware(request: NextRequest) {
   let response = NextResponse.next()
+
   try {
+    if (request.nextUrl.pathname.startsWith("/robots.txt")) {
+      return NextResponse.next()
+    }
+
     const regionMap = await getRegionMap()
 
     const countryCode = regionMap && (await getCountryCode(request, regionMap))
