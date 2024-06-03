@@ -1,4 +1,4 @@
 User-agent: *
-Disallow: /order
-Disallow: /order/
+Disallow: */order
+Disallow: */order/
 Allow: /
