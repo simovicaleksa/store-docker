@@ -15,7 +15,6 @@ const inter = Inter({
 export const metadata = {
   title: `${storeName} | Better Shopping`,
   description: `${storeName} is an e-commerce store of the future.`,
-  icons: [{ rel: "icon", url: "/favicon.ico" }],
 }
 
 export default function RootLayout({
