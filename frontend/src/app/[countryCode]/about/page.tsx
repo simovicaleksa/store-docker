@@ -2,7 +2,12 @@ import AboutSection from "@/components/about/AboutSection"
 import LocalizedClientLink from "@/components/link/LocalizedClientLink"
 import { Button } from "@/components/shared/ui/button"
 import { ArrowRight } from "lucide-react"
+import { type Metadata } from "next"
 import React from "react"
+
+export const metadata: Metadata = {
+  title: "About",
+}
 
 export default function AboutPage() {
   return (
