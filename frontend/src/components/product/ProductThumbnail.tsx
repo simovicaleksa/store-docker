@@ -1,5 +1,5 @@
 import Image, { type ImageProps } from "next/image"
-import React from "react"
+import React, { type ForwardedRef, forwardRef } from "react"
 
 interface ProductThumbnailProps extends Omit<ImageProps, "alt" | "src"> {
   width?: number
@@ -7,16 +7,15 @@ interface ProductThumbnailProps extends Omit<ImageProps, "alt" | "src"> {
   src: string | undefined | null
 }
 
-export default function ProductThumbnail({
-  src,
-  width = 500,
-  height = 500,
-  ...rest
-}: ProductThumbnailProps) {
+const ProductThumbnail = forwardRef(function ProductThumbnail(
+  { src, width = 500, height = 500, ...rest }: ProductThumbnailProps,
+  ref: ForwardedRef<HTMLImageElement>,
+) {
   if (!src) return null
 
   return (
     <Image
+      ref={ref}
       src={src}
       width={width}
       height={height}
@@ -24,4 +23,6 @@ export default function ProductThumbnail({
       {...rest}
     />
   )
-}
+})
+
+export default ProductThumbnail
