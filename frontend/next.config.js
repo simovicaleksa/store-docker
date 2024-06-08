@@ -24,7 +24,13 @@ const config = {
         hostname: "medusa-server-testing.s3.us-east-1.amazonaws.com",
       },
       {
+        hostname: "localhost",
+      },
+      {
         hostname: "host.docker.internal",
+      },
+      {
+        hostname: "example.com",
       },
     ],
   },
