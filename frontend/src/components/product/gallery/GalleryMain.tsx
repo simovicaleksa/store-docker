@@ -5,7 +5,7 @@ import {
   CarouselItem,
 } from "@/components/shared/ui/carousel"
 import { type Image } from "@medusajs/medusa"
-import React, { type Dispatch, type SetStateAction } from "react"
+import React, { useRef, type Dispatch, type SetStateAction } from "react"
 import ProductThumbnail from "../ProductThumbnail"
 
 type ImageGalleryProps = {
@@ -14,13 +14,17 @@ type ImageGalleryProps = {
 }
 
 export default function GalleryMain({ images, setMainApi }: ImageGalleryProps) {
+  const imageRef = useRef<HTMLImageElement>(null)
+
   return (
     <Carousel setApi={setMainApi}>
       <CarouselContent>
         {images.map((image, idx) => (
           <CarouselItem key={idx}>
             <ProductThumbnail
-              className="bg-secondary h-full w-full rounded-[var(--radius)] object-scale-down"
+              ref={imageRef}
+              className="h-full w-full rounded-[var(--radius)] bg-secondary object-scale-down"
+              style={{ minHeight: `${imageRef.current?.width}px` }}
               src={image.url}
               width={700}
               height={700}
