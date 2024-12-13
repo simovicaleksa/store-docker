@@ -6,7 +6,7 @@ services:
     build:
       context: ./backend
       dockerfile: ./docker/Dockerfile
-    container_name: medusa-backend
+    container_name: store-backend
     depends_on:
       - postgres
       - redis
@@ -17,16 +17,18 @@ services:
     volumes:
       - uploads:/backend/uploads
     restart: unless-stopped
+    env_file:
+      - .env
 
   postgres:
     image: postgres:16.2-alpine
     ports:
       - 5432
-    container_name: medusa-postgres
+    container_name: store-postgres
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: medusa-docker
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_HOST_AUTH_METHOD: trust
     networks:
       - internal
     volumes:
@@ -35,7 +37,7 @@ services:
 
   redis:
     image: redis:7
-    container_name: medusa-redis
+    container_name: store-redis
     ports:
       - 6379
     networks:
@@ -44,11 +46,11 @@ services:
 
   meilisearch:
     image: getmeili/meilisearch:v1.8
-    container_name: medusa-meilisearch
+    container_name: store-meilisearch
     ports:
       - 7700
     environment:
-      - MEILI_MASTER_KEY=meilisearch
+      - MEILI_MASTER_KEY=${MEILI_MASTER_KEY}
       - MEILI_NO_ANALYTICS=true
       - MEILI_NO_SENTRY=true
     volumes:
@@ -61,7 +63,7 @@ services:
     build:
       context: ./frontend
       dockerfile: ./docker/Dockerfile
-    container_name: medusa-frontend
+    container_name: store-frontend
     ports:
       - 8000
     depends_on:
@@ -69,10 +71,12 @@ services:
     networks:
       - internal
     restart: unless-stopped
+    env_file:
+      - .env
 
   caddy:
     image: caddy:2.8-alpine
-    container_name: medusa-caddy
+    container_name: store-caddy
     ports:
       - 443:443
       - 9000:9000

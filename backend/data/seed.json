@@ -2,12 +2,6 @@
   "store": {
     "currencies": ["eur", "usd"]
   },
-  "users": [
-    {
-      "email": "admin@medusa-test.com",
-      "password": "supersecret"
-    }
-  ],
   "regions": [
     {
       "id": "test-region-eu",
@@ -876,9 +870,7 @@
       "handle": "coffee-mug",
       "is_giftcard": false,
       "weight": 400,
-      "images": [
-        "https://medusa-public-images.s3.eu-west-1.amazonaws.com/coffee-mug.png"
-      ],
+      "images": ["https://medusa-public-images.s3.eu-west-1.amazonaws.com/coffee-mug.png"],
       "options": [
         {
           "title": "Size",

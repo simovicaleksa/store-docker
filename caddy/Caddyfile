@@ -1,23 +1,17 @@
-www.codexn.net {
-  tls asesa.simic@gmail.com
-
-  redir https://codexn.net
-}
-
-codexn.net {
-  tls asesa.simic@gmail.com
+example.com {
+  tls your@gmail.com
 
   reverse_proxy http://frontend:8000
 }
 
-www.codexn.net:9000 {
-  tls asesa.simic@gmail.com
-
-  redir https://codexn.net:9000
-}
-
-codexn.net:9000 {
-  tls asesa.simic@gmail.com
+example.com:9000 {
+  tls your@gmail.com
 
   reverse_proxy http://backend:9000
 }
+
+# uncomment the following lines if you want to redirect www.example.com to example.com
+
+# www.example.com {
+#   redir https://example.com
+# }

@@ -1,6 +1,3 @@
-# MAKE SURE TO CHANGE MEILISEARCH KEY TO 16byte value
-# ALSO CHANGE IT INSIDE backend/.env
-
 services:
   backend:
     build:
@@ -15,6 +12,8 @@ services:
     networks:
       - internal
     restart: unless-stopped
+    env_file:
+      - .env
 
   postgres:
     image: postgres:16.2-alpine
@@ -22,9 +21,9 @@ services:
       - 5432
     container_name: medusa-postgres
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: medusa-docker
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_HOST_AUTH_METHOD: trust
     networks:
       - internal
     restart: unless-stopped
@@ -44,7 +43,7 @@ services:
     ports:
       - 7700
     environment:
-      - MEILI_MASTER_KEY=meilisearch
+      - MEILI_MASTER_KEY=${MEILI_MASTER_KEY}
       - MEILI_NO_ANALYTICS=true
       - MEILI_NO_SENTRY=true
     volumes:

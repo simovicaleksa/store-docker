@@ -1,7 +1,7 @@
 import Overlay from "@/components/layout/Overlay"
 import Footer from "@/components/layout/footer/Footer"
 import Header from "@/components/layout/header/Header"
-import { storeName } from "@/constants/store"
+import { env } from "@/env"
 import JotaiProvider from "@/providers/jotai/JotaiProvider"
 import "@/styles/globals.css"
 import { type Metadata } from "next"
@@ -27,8 +27,8 @@ const inter = Inter({
 // })
 
 export const metadata: Metadata = {
-  title: `${storeName} | Better Shopping`,
-  description: `${storeName} is an e-commerce store of the future.`,
+  title: env.NEXT_PUBLIC_COMPANY_NAME,
+  description: env.NEXT_PUBLIC_COMPANY_DESCRIPTION,
 }
 
 export default function RootLayout({
