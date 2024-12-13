@@ -6,7 +6,7 @@ import { getCollections } from "@/services/collection"
 import FooterCollections from "./FooterCollections"
 import FooterRegion from "./FooterRegion"
 import { bubblesPattern } from "@/constants/patterns"
-import { storeName } from "@/constants/store"
+import { env } from "@/env"
 
 const usefulLinks: LinkType[] = [
   {
@@ -43,10 +43,11 @@ export default async function Footer() {
 
       <div className="mx-auto grid w-full max-w-7xl grid-cols-1 gap-16 p-5 sm:grid-cols-2 xl:grid-cols-4">
         <div className="w-full space-y-3">
-          <h1 className="text-xl font-semibold">{storeName}</h1>
+          <h1 className="text-xl font-semibold">
+            {env.NEXT_PUBLIC_COMPANY_NAME}
+          </h1>
           <p className="text-sm text-muted-foreground">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            {env.NEXT_PUBLIC_COMPANY_DESCRIPTION}
           </p>
         </div>
         <div className="w-full space-y-3">

@@ -6,9 +6,9 @@ import { Button } from "@/components/shared/ui/button"
 import Link from "next/link"
 import CartTrigger from "@/components/cart/CartTrigger"
 import HeaderNavigation from "./HeaderNavigation"
-import { storeName } from "@/constants/store"
 import useScrollY from "@/hooks/shared/useScrollY"
 import { cn } from "@/lib/utils"
+import { env } from "@/env"
 
 export default function Header() {
   const { scrollY, scrollDirection } = useScrollY()
@@ -25,7 +25,7 @@ export default function Header() {
     >
       <div className="mx-auto flex w-full max-w-7xl flex-row items-center justify-between">
         <Button className="text-lg font-semibold" variant={"ghost"} asChild>
-          <Link href="/">{storeName}</Link>
+          <Link href="/">{env.NEXT_PUBLIC_COMPANY_NAME}</Link>
         </Button>
         <div className="flex flex-row items-center space-x-3">
           <HeaderNavigation />
