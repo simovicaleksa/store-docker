@@ -37,10 +37,6 @@ const navigation: LinkType[] = [
     title: "Contact",
     href: "/contact",
   },
-  {
-    title: "About",
-    href: "/about",
-  },
 ]
 
 export default function HeaderNavigation() {

@@ -6,6 +6,8 @@ export default function useTailwindBreakpoint(screen: ScreenType) {
   const [isBreakpoint, setIsBreakPoint] = useState<boolean>(false)
 
   useEffect(() => {
+    if (typeof window === "undefined") return
+
     function handleScreenResize() {
       const screens = {
         sm: 640,
