@@ -78,6 +78,7 @@ services:
     image: caddy:2.8-alpine
     container_name: store-caddy
     ports:
+      - 80:80
       - 443:443
       - 9000:9000
     volumes:
