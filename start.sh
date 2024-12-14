@@ -6,7 +6,7 @@ run_compose() {
     docker network create "web"
     local file=$1
     echo "Running Docker Compose using $file..."
-    docker-compose --env-file ./.env -f $file up -d
+    docker compose --env-file ./.env -f $file up -d
 }
 
 # User prompt to select environment

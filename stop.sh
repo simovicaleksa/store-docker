@@ -4,7 +4,7 @@
 stop_compose() {
     local file=$1
     echo "Running Docker Compose using $file..."
-    docker-compose --env-file ./.env -f $file down -d
+    docker compose --env-file ./.env -f $file down -d
 }
 
 # User prompt to select environment
