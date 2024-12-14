@@ -79,7 +79,7 @@ git clone https://github.com/AleksaSimovic1/store-docker
 cd store-docker
 
 # You may need to make the scripts executable
-chmod +x prepare.sh start.sh stop.sh post-start.sh create-env.sh destroy-env.sh
+chmod +x prepare.sh start.sh stop.sh
 
 ./prepare.sh
 ```
