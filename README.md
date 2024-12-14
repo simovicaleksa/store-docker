@@ -73,13 +73,13 @@ Follow the steps below to deploy the application:
 git clone https://github.com/AleksaSimovic1/store-docker
 ```
 
-2. Generate a `.env` file in the root of the project
+2. Using `prepare.sh` script, configure project variables
 
 ```bash
 cd store-docker
 
 # You may need to make the scripts executable
-chmod +x prepare.sh start.sh stop.sh
+chmod +x prepare.sh start.sh stop.sh seed.sh
 
 ./prepare.sh
 ```
@@ -88,72 +88,40 @@ chmod +x prepare.sh start.sh stop.sh
 
 ```bash
 nano .env
+
+# You may want to edit the following variables:
+# DEFAULT_COUNTRY
+# NEXT_PUBLIC_COMPANY_NAME
+# NEXT_PUBLIC_COMPANY_DESCRIPTION
+# EMAIL_SENDER_ADDRESS
+# EMAIL_SENDER_PASSWORD
+# EMAIL_HOST
+# STRIPE_PUBLISH_KEY
+# STRIPE_WEBHOOK_SECRET
+# STRIPE_API_KEY
+
 # After editing the file
 # ctrl+o (save the file)
 # hit enter to save it in current location
 # ctrl+x (exit back to console)
 ```
 
-4. Sync environemnt between frontend and backend
-
-```bash
-./create-env.sh
-
-# When changing the root .env file you need to run this script again.
-# If you want to remove the .env from frontend and backend you can run
-# ./destroy-env.sh
-```
-
-5. Setup DNS records for the application
+4. Setup DNS records for the application
 
 | Hostname | DNS Record Type | Value            |
 | -------- | --------------- | ---------------- |
 | @        | A               | <VPS_IP_ADDRESS> |
 
-6. Edit `Caddyfile` according to your domain and email address
-
-```bash
-nano ./caddy/Caddyfile
-```
-
-```bash
-# Replace "example.com" with your domain
-# example.com -> yourdomain.com
-# example.com:443 -> yourdomain.com:443
-# example.com:9000 -> yourdomain.com:9000
-
-# Replace "your@email.com" with your email address
-# your@email.com -> john.doe@gmail.com
-```
-
-7. Add your backend domain to `next.config.js` image domains below "host.docker.internal"
-
-```bash
-nano ./frontend/next.config.js
-```
-
-```json
-{
-  {
-    hostname: "host.docker.internal",
-  },
-  {
-    hostname: "example.com",
-    port: "9000",
-  },
-}
-```
-
-8. Start the application
+5. Start the application
 
 ```bash
 ./start.sh
 ```
 
-9. Run `post-start.sh` script to **seed the store with sample data** and **add a superuser account**
+6. Run `seed.sh` script to **seed the store with sample data** and **add a superuser account**
 
 ```bash
-./post-start.sh
+./seed.sh
 ```
 
-10. That's it!
+7. That's it!
