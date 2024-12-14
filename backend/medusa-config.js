@@ -30,7 +30,7 @@ const ADMIN_CORS = process.env.ADMIN_CORS || "http://localhost:7000,http://local
 // CORS to avoid issues when consuming Medusa from a client
 const STORE_CORS = process.env.STORE_CORS || "http://localhost:8000";
 
-const DATABASE_URL = process.env.DATABASE_URL || "postgres://localhost/store";
+const DATABASE_URL = `postgres://${process.env.POSTGRES_USER}@${process.env.POSTGRES_HOST}:5432/${process.env.POSTGRES_DB}`;
 
 // Stripe variables needed for online payments to work
 
