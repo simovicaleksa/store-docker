@@ -4,3 +4,4 @@ cache
 .git
 .gitignore
 .env
+uploads

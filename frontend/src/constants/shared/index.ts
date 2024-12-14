@@ -1,1 +1,3 @@
-export const BACKEND_URL = process.env.BACKEND_URL ?? "http://localhost:9000"
+import { env } from "@/env"
+
+export const BACKEND_URL = env.NEXT_PUBLIC_BACKEND_URL

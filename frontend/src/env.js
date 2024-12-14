@@ -8,7 +8,6 @@ export const env = createEnv({
    */
   server: {
     NODE_ENV: z.enum(["development", "test", "production"]),
-    BACKEND_URL: z.string().url(),
   },
 
   /**
@@ -21,6 +20,7 @@ export const env = createEnv({
     NEXT_PUBLIC_DEFAULT_COUNTRY: z.string().length(2),
     NEXT_PUBLIC_COMPANY_NAME: z.string(),
     NEXT_PUBLIC_COMPANY_DESCRIPTION: z.string(),
+    NEXT_PUBLIC_BACKEND_URL: z.string().url(),
   },
 
   /**
@@ -34,8 +34,7 @@ export const env = createEnv({
     NEXT_PUBLIC_COMPANY_NAME: process.env.NEXT_PUBLIC_COMPANY_NAME,
     NEXT_PUBLIC_COMPANY_DESCRIPTION:
       process.env.NEXT_PUBLIC_COMPANY_DESCRIPTION,
-
-    BACKEND_URL: process.env.BACKEND_URL,
+    NEXT_PUBLIC_BACKEND_URL: process.env.NEXT_PUBLIC_BACKEND_URL,
   },
   /**
    * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation. This is especially
