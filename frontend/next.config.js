@@ -31,6 +31,7 @@ const config = {
       },
       {
         hostname: "example.com",
+        port: "9000",
       },
     ],
   },
