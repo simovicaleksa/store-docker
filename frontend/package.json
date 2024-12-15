@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.4",
-    "@medusajs/medusa": "^1.20.4",
+    "@medusajs/medusa": "^1.20.7",
     "@medusajs/medusa-js": "^6.1.8",
     "@medusajs/product": "^0.3.11",
     "@radix-ui/react-accordion": "^1.1.2",
