@@ -6,6 +6,7 @@ import LocalizedClientLink from "../link/LocalizedClientLink"
 import { type PricedProduct } from "@medusajs/medusa/dist/types/pricing"
 import HomeProductCard from "./HomeProductCard"
 import useTailwindBreakpoint from "@/hooks/shared/useTailwindBreakpoint"
+import { env } from "@/env"
 
 export default function HomeHeroBanner({
   product,
@@ -22,12 +23,11 @@ export default function HomeHeroBanner({
         <div className="flex w-full flex-col">
           <div className="space-y-2">
             <h1 className="text-4xl font-bold lg:text-5xl">
-              Our websites drive results!
-              {/* Shopping is better with us! */}
+              {env.NEXT_PUBLIC_SLOGAN}
             </h1>
             <p className="text-muted-foreground lg:text-xl">
               {/* Buying things online was never easier. */}
-              This is a demo of your future online store.
+              {env.NEXT_PUBLIC_DESCRIPTION}
             </p>
           </div>
           <div className="mt-5 flex flex-row flex-wrap gap-2">

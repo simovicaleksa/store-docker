@@ -5,6 +5,7 @@ import { env } from "@/env"
 import JotaiProvider from "@/providers/jotai/JotaiProvider"
 import "@/styles/globals.css"
 import { type Metadata } from "next"
+import { PublicEnvScript } from "next-runtime-env"
 
 import { Inter } from "next/font/google"
 
@@ -40,6 +41,7 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <link rel="icon" href="/favicon.ico" />
+        <PublicEnvScript />
       </head>
       <body className={`${inter.className}`}>
         <JotaiProvider>
