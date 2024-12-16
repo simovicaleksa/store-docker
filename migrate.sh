@@ -3,7 +3,6 @@
 # Array of target locations for .env file
 TARGET_LOCATIONS=(
     "./frontend/.env"
-    "./backend/.env"
 )
 
 # Source .env file location (same directory as this script)

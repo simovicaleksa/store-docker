@@ -17,6 +17,8 @@ services:
     volumes:
       - uploads:/backend/uploads
     restart: unless-stopped
+    env_file:
+      - .env
 
   postgres:
     image: postgres:16.2-alpine
