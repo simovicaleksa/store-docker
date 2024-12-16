@@ -79,7 +79,7 @@ git clone https://github.com/AleksaSimovic1/store-docker
 cd store-docker
 
 # You may need to make the scripts executable
-chmod +x prepare.sh start.sh stop.sh seed.sh
+chmod +x prepare.sh start.sh stop.sh seed.sh migrate.sh
 
 ./prepare.sh
 ```
@@ -106,11 +106,13 @@ nano .env
 # ctrl+x (exit back to console)
 ```
 
-4. Setup DNS records for the application
+4. Migrate the `.env` file
 
-| Hostname | DNS Record Type | Value            |
-| -------- | --------------- | ---------------- |
-| @        | A               | <VPS_IP_ADDRESS> |
+```bash
+# You will need to run this script every time you make changes to the root .env file
+
+./migrate.sh
+```
 
 5. Start the application
 
@@ -124,4 +126,10 @@ nano .env
 ./seed.sh
 ```
 
-7. That's it!
+7. Setup DNS records for the application
+
+| Hostname | DNS Record Type | Value            |
+| -------- | --------------- | ---------------- |
+| @        | A               | <VPS_IP_ADDRESS> |
+
+8. That's it!

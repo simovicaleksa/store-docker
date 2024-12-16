@@ -17,8 +17,6 @@ services:
     volumes:
       - uploads:/backend/uploads
     restart: unless-stopped
-    env_file:
-      - .env
 
   postgres:
     image: postgres:16.2-alpine
@@ -71,8 +69,6 @@ services:
     networks:
       - internal
     restart: unless-stopped
-    env_file:
-      - .env
 
   caddy:
     image: caddy:2.8-alpine
