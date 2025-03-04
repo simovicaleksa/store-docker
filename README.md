@@ -1,9 +1,9 @@
 # Table of contents:
 
-1. [About](about)
-2. [Technical](technical)
-3. [Screenshots](screenshots)
-4. [Deployment](deployment)
+1. [About](#About)
+2. [Technical](#Technical)
+3. [Screenshots](#Screenshots)
+4. [Deployment](#Deployment)
 
 # About
 
