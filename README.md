@@ -40,7 +40,7 @@ Backend:
 
 Dev-ops:
 - Docker
-- VPS / Cloud
+- Linux running on VPS / Cloud server
 
 The application is containerized in a single docker compose, making it easy to deploy on any VPS or Cloud server.
 To host your own e-commerce store you just have to clone this repository on your VPS / Cloud server, configure your environment and run `start.sh` script.
