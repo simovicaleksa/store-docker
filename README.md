@@ -10,18 +10,18 @@
 Store Docker is an e-commerce solution for businesses interested in starting to sell online.
 It is a full featured application, with everyting a modern online store should have, including:
 
-- Intuitive & powerful admin dashboard
+
 - Modern design
-- Smooth UX
-- Custom, fast checkout
-- Cart functionality
+- Smooth user experience
+- Custom checkout
+- Cart
 - Product search, sort and filter
-- Product tracking
-- and more...
+- Order tracking
+- Powerful admin dashboard - powered by medusa.js
 
 # Technical
 
-Front end:
+Frontend:
 
 - TypeScript
 - Next.js (`app/` directory, with the focus on SSR with **server actions**)
@@ -29,17 +29,22 @@ Front end:
 - Jotai (Redux alternative)
 - TailwindCSS
 
-Back end:
+Backend:
 
 - Medusa.js
 - PostgreSQL
 - Redis
-- Docker
-- Meilisearch (self-hostable algolia alternative)
-- Caddy server (nginx alternative)
-- Stripe integration
+- Stripe
+- Meilisearch (self-hosted algolia alternative)
+- Caddy web server (nginx alternative)
 
-Because the entire application (front end, back end, databases, and web server) are containerized using Docker, the application is easily hostable on any VPS or Cloud server.
+Dev-ops:
+- Docker
+- VPS / Cloud
+
+The application is containerized in a single docker compose, making it easy to deploy on any VPS or Cloud server.
+To host your own e-commerce store you just have to clone this repository on your VPS / Cloud server, configure your environment and run `start.sh` script.
+You can read more about this in the [Deployment](#Deployment) section.
 
 # Screenshots
 
